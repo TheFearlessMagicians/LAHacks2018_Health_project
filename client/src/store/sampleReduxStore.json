@@ -1,0 +1,30 @@
+{
+        challenges: [
+                // This is a single challenge object. we plan to have multiple challenges.
+                {
+                        startDate: 'MOMENTOBJECTHERE',
+                        endDate: 'MOMENTOBJECTHERE',
+                        description: 'description here',
+                        goal: 'goalstring here',
+                        frequency: 4,
+                        currentBets: [
+                                {
+                                        betterId: 'q190adoijw',
+                                        money: 400, // float. in USD
+                                        isFor: true, // for or against.
+                                        challengeId: '1209adjsblablabla' // iss this needed? same challenge obj. HMM...
+                                }
+                        ],
+                        progress: [
+                                true,
+                                false,
+                                true,
+                                true,
+                                false
+                                 //etc
+                        ],
+                        userId: '1da20cblablabla',
+                        challengeId:'1209adjsblablabla'
+                }
+        ]
+}
