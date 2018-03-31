@@ -26,5 +26,15 @@
                         userId: '1da20cblablabla',
                         challengeId:'1209adjsblablabla'
                 }
-        ]
+        ],
+        // storing individual user info.
+        user: {
+                name: 'blablabla',
+                userId:'bla bla bla',
+                challengesHistory:[
+                        {
+                            // just like a challenge above.
+                        }
+                ]
+        }
 }
