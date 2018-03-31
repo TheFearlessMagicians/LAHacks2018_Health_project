@@ -1,4 +1,5 @@
 {
+        // UPDATED AS OF 4.45 AM Sat 31 Mar PST.
         challenges: [
                 // This is a single challenge object. we plan to have multiple challenges.
                 {
@@ -7,6 +8,7 @@
                         description: 'description here',
                         goal: 'goalstring here',
                         frequency: 4,
+                        userBet: 400, // how much user is betting against himself.
                         currentBets: [
                                 {
                                         betterId: 'q190adoijw',
