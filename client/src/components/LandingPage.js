@@ -8,6 +8,7 @@ class LandingPage extends React.Component {
         name:''
     }
     render() {
+        
         return (
     	<div className = "container__landing">
         <Input placeholder="What's your name?" onChange={(e)=>{
@@ -19,7 +20,7 @@ class LandingPage extends React.Component {
                     alert('put your name please!');
                 else{
                     this.props.dispatch(addBetter({name:this.state.name}))
-        			this.props.history.push('/BetterPage');
+        			this.props.history.push('/marketDashboard');
                 }
     		}}>Better</Button>
 
@@ -29,7 +30,7 @@ class LandingPage extends React.Component {
                     alert('put your name please!');
                 else{
                     this.props.dispatch(addUser({name:this.state.name}))
-                    this.props.history.push('/UserPage');
+                    this.props.history.push('/userDashboard');
                 }
 
     		}}>User</Button>
