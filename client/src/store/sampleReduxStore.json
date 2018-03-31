@@ -18,8 +18,7 @@
                                  //etc
                         ],
                         userId: '1da20cblablabla',
-                        challengeId:'1209adjsblablabla',
-                        selectedChallenge: undefined
+                        challengeId:'1209adjsblablabla'
                 }
         ],
         // storing all the bets.
