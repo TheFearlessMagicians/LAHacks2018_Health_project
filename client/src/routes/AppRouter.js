@@ -9,7 +9,7 @@ import MarketDashboardPage from '../components/MarketDashboardPage';
 import UserDashboardPage from '../components/UserDashboardPage';
 // ^ ignore all this imports
 import LandingPage from '../components/LandingPage';
-
+import MarketDashBoardPage from '../components/MarketDashBoardPage';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 //Header
 // Pages.
@@ -30,9 +30,7 @@ const AppRouter =()=> (
         <Route path="/marketDashboard" component = {MarketDashboardPage} exact={true} />
         <Route path="/userDashboard" component = {UserDashboardPage} exact={true} />
         <Route path="/createChallenge" component={AddChallengePage}/> {/* We have to change
-        //webpack config to tell dev server to always show index.html file for 404 pages
-        // i.e. when we tried to request to server but nothing is found (cos we're using
-        // client side routing).
+
         // . Otherwise, when we get /settings, this will be an actual GET request
         // to the server, even though we want client-side routing.*/}
         <Route path = "/edit/:id" component={EditExpensePage} />

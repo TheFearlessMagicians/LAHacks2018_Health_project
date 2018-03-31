@@ -20,5 +20,4 @@ const ConnectedMarketList = connect(mapStateToProps)(MarketList);
 
 
 
-
-export default MarketList;
+export default ConnectedMarketList;//MarketList;
