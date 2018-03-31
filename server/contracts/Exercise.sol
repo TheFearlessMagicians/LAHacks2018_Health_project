@@ -12,6 +12,7 @@ contract Exercise {
     bool deposited = false;
     uint workoutCount = 0;
     uint totalBetAgainst = 0;
+    bool active = false;
     
     //keeping track of all bets
     struct bet {
@@ -54,6 +55,7 @@ contract Exercise {
         frequency = _frequency; 
         calorieTarget = _calorieTarget;
         owner = msg.sender;
+        active = true;
     }
     
     function deposit () public isOwner payable {
@@ -88,6 +90,7 @@ contract Exercise {
     function pay (address dest, uint money) public {
         if (address(this).balance < money){
             dest.transfer(address(this).balance);
+            active = false;
         } else {
             dest.transfer(money);
         }
@@ -100,4 +103,7 @@ contract Exercise {
         return workoutCount;
     }
     
+    function getActive() public constant returns (bool){
+        return active;
+    }
 }
