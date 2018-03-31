@@ -10,6 +10,9 @@ import {setTextFilter} from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
 import {Provider} from 'react-redux';
 import moment from 'moment';
+import LandingPage from './components/Landing'
+
+
 const store = configureStore();
 store.dispatch(addExpense({description: 'water bill', amount: 10000,createdAt: moment() - 100}));
 store.dispatch(addExpense({description: 'gas bill', amount: 1000,createdAt: moment() - 100000}));
@@ -25,6 +28,6 @@ const app = (
   <AppRouter/>
 </Provider>
 )
-ReactDOM.render(app, document.getElementById('app'));
+ReactDOM.render(<LandingPage/>, document.getElementById('app'));
 
 
