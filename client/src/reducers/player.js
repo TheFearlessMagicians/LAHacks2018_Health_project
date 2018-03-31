@@ -1,6 +1,6 @@
 import uuid from 'uuid';
 const defaultPlayerState= {
-
+ type: ''
 };
 
 // filter reducer:
