@@ -11,10 +11,14 @@ const Navigation = (props) => {
             <div>
             <NavLink to="/userDashboard" activeClassName="is-active" exact = {true}> My Challenges </NavLink>
             <NavLink to="/createChallenge" activeClassName="is-active" exact = {true}>New Challenge</NavLink>
+              <NavLink to="/" activeClassName="is-active" exact = {true}>logout</NavLink>
             </div>)
             }
             {props.player.type === 'better' &&(
+                <div>
                 <NavLink to="/marketDashboard" activeClassName="is-active" exact = {true}> Market </NavLink>
+              <NavLink to="/" activeClassName="is-active" exact = {true}>logout</NavLink>
+              </div>
                 )
             }
 

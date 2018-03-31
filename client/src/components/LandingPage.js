@@ -11,6 +11,7 @@ class LandingPage extends React.Component {
 
         return (
     	<div className = "container__landing">
+        <h2> Start something, and do it. </h2>
         <Input placeholder="What's your name?" onChange={(e)=>{
             this.setState({name: e.target.value});
         }} />
