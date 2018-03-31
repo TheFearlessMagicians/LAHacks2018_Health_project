@@ -1,0 +1,55 @@
+{
+        // UPDATED AS OF 10.452AM Sat 31 Mar PST.
+        challenges: [
+                // This is a single challenge object. we plan to have multiple challenges.
+                {
+                        startDate: 'MOMENTOBJECTHERE',
+                        endDate: 'MOMENTOBJECTHERE',
+                        description: 'description here',
+                        goal: 'goalstring here',
+                        frequency: 4,
+                        userBet: 400, // how much user is betting against himself.
+                        progress: [
+                                true,
+                                false,
+                                true,
+                                true,
+                                false
+                                 //etc
+                        ],
+                        userId: '1da20cblablabla',
+                        challengeId:'1209adjsblablabla'
+                }
+        ],
+        // storing all the bets.
+        bets: [
+                {
+                        betterId: 'q190adoijw',
+                        challengeId: '1209adjsblablabla',
+                        money: 400, // float. in USD
+                        isFor: true, // for or against.
+                }
+        ],
+        // storing individual  player info. the below will change depending on whether you pick
+        // better, or user.
+        player: {
+                type: 'user' // OR better.
+                name: 'blablabla',
+                id:'bla bla bla',
+                //The below is optional. We can either have it for challenges, or
+                // for bets.
+                currentChallenges: [
+                    //challenge objects
+                ],
+                challengesHistory:[
+                        {
+                            // challenge objects
+                        }
+                ]
+                /*
+                FOR BETS:
+                currentBets: [],
+                bettingHistory: []
+                */
+        }
+}
