@@ -1,4 +1,3 @@
-// filter default state:
 const defaultChallengesState= [];
 
 // filter reducer:

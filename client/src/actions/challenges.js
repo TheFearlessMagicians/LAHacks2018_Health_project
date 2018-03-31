@@ -10,7 +10,7 @@ export const addChallenge = ( newChallenge) => ({
 });
 
 export const removeExpense = (challengeId) => {
-  if( typeof id === 'undefined')
+  if( typeof challengeId === 'undefined')
     return {};
   return {
     'type': 'REMOVE_CHALLENGE',
@@ -18,7 +18,7 @@ export const removeExpense = (challengeId) => {
   }
 }
 
-export const editExpense = (challengeId,updatedChallenge) => ({
+export const editExpense = (challengeId, updatedChallenge) => ({
   type: 'EDIT_CHALLENGE',
   challengeId,
   updatedChallenge

@@ -1,5 +1,5 @@
 {
-        // UPDATED AS OF 4.45 AM Sat 31 Mar PST.
+        // UPDATED AS OF 10.452AM Sat 31 Mar PST.
         challenges: [
                 // This is a single challenge object. we plan to have multiple challenges.
                 {
@@ -9,14 +9,6 @@
                         goal: 'goalstring here',
                         frequency: 4,
                         userBet: 400, // how much user is betting against himself.
-                        currentBets: [
-                                {
-                                        betterId: 'q190adoijw',
-                                        money: 400, // float. in USD
-                                        isFor: true, // for or against.
-                                        challengeId: '1209adjsblablabla' // iss this needed? same challenge obj. HMM...
-                                }
-                        ],
                         progress: [
                                 true,
                                 false,
@@ -29,14 +21,35 @@
                         challengeId:'1209adjsblablabla'
                 }
         ],
-        // storing individual user info.
-        user: {
+        // storing all the bets.
+        bets: [
+                {
+                        betterId: 'q190adoijw',
+                        challengeId: '1209adjsblablabla',
+                        money: 400, // float. in USD
+                        isFor: true, // for or against.
+                }
+        ],
+        // storing individual  player info. the below will change depending on whether you pick
+        // better, or user.
+        player: {
+                type: 'user' // OR better.
                 name: 'blablabla',
-                userId:'bla bla bla',
+                id:'bla bla bla',
+                //The below is optional. We can either have it for challenges, or
+                // for bets.
+                currentChallenges: [
+                    //challenge objects
+                ],
                 challengesHistory:[
                         {
-                            // just like a challenge above.
+                            // challenge objects
                         }
                 ]
+                /*
+                FOR BETS:
+                currentBets: [],
+                bettingHistory: []
+                */
         }
 }
