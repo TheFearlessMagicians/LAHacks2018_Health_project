@@ -36,7 +36,7 @@ class MarketItemList extends React.Component{
     });
   }
 
-  
+
 
   render() {
     return (
@@ -62,11 +62,6 @@ class MarketItemList extends React.Component{
 		  </div>
 		  <Input type = "number" placeholder="Insert Your Bet" />
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 073cacea34a0714ec99188142f4e30b9bd1f3f72
         </Modal>
 
 

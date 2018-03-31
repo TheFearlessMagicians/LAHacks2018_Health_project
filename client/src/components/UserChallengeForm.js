@@ -7,8 +7,8 @@ import {DateRangePicker} from 'react-dates';
 // import airbnb react date's CSS.
 import 'react-dates/lib/css/_datepicker.css';
 import 'antd/dist/antd.css';
-import { Button } from 'antd';
-export default class ExpenseForm extends React.Component {
+import { Button,Row, Col,Input, InputNumber } from 'antd';
+export default class UserChallengeForm extends React.Component {
   constructor(props){
     super(props);
     this.state ={
@@ -16,7 +16,7 @@ export default class ExpenseForm extends React.Component {
     endDate: props.existingChallenge? moment(props.existingChallenge.endDate) : null,//moment(moment()+ 10000), // we use the unix timestamp
     goal: props.existingChallenge? props.existingChallenge.goal :'' ,
     description: props.existingChallenge? props.existingChallenge.description :'' ,
-    userBet: props.existingChallenge? props.existingChallenge.userBet.toString() : undefined,
+    userBet: props.existingChallenge? props.existingChallenge.userBet.toString() : 0,
     frequency: props.existingChallenge? props.existingChallenge.frequency: undefined,
     error: '',
     calendarFocused: null,
@@ -45,16 +45,12 @@ export default class ExpenseForm extends React.Component {
     const frequency = e.target.value;
     this.setState({frequency});
   }
-  onuserBetChange = (e) => {
-    const userBet = e.target.value;
-    if(!userBet || userBet.match(/^\d{1,}(\.\d{0,2})?$/))
-      // Note that we're putting in !userBet just incase
-      // the user wants to delete the whole userBet ting.
-      // regex for matching number with at most
-      // 2 decimal digits.
+  onuserBetChange = (val) => {
+    const userBet =val;// e.target.value;
+
       this.setState({userBet});
-    else
-      alert('enter a valid userBet!');
+    //else
+     // alert('enter a valid userBet!');
   }
 
   onDatesChange = ({startDate,endDate}) => {
@@ -103,24 +99,55 @@ export default class ExpenseForm extends React.Component {
     }
   }
   render() {
+      const formItemLayout = {
+     labelCol: {
+       xs: { span: 24 },
+       sm: { span: 8 },
+     },
+     wrapperCol: {
+       xs: { span: 24 },
+       sm: { span: 16 },
+     },
+   };
+   const tailFormItemLayout = {
+      wrapperCol: {
+        xs: {
+          span: 24,
+          offset: 0,
+        },
+        sm: {
+          span: 16,
+          offset: 8,
+        },
+      },
+    };
     return (
       <div>
         {this.state.error && <p> {this.state.error}</p>}
-        <form
-        >
-          <input
-            type="text"
-            placeholder="Add your goal"
-            autoFocus
-            value = {this.state.goal}
-            onChange = {this.onGoalChange}
-          />
-          <input
-            type="number"
+         <Row type="flex" justify="center">
+         <Col span={24}>
+              <Input
+                type="text"
+                placeholder="Add your goal"
+                autoFocus
+                value = {this.state.goal}
+                onChange = {this.onGoalChange}
+              />
+              </Col>
+                        </Row>
+              <Row type="flex" justify="center">
+              <Col span={24}>
+          <InputNumber
+            size="large"
+             formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             placeholder="Place your bet here"
             value = {this.state.userBet}
             onChange ={this.onuserBetChange}
           />
+          </Col>
+                    </Row>
+          <Row type="flex" justify="center">
+          <Col span={24}>
           <p> Select your goal period. Remember, make sure that you goal is:: </p>
           <ul>
               <li>S: Specific</li>
@@ -129,12 +156,20 @@ export default class ExpenseForm extends React.Component {
               <li>R: Realistic</li>
               <li>T: Time-based</li>
           </ul>
-          <input
-            type="number"
+          </Col>
+                    </Row>
+          <Row type="flex" justify="center">
+          <Col span={24}>
+          <InputNumber
+          size="large"
             placeholder="How many times per week are you going to do this ting? "
             value = {this.state.frequency}
             onChange ={this.onFrequencyChange}
           />
+          </Col>
+                    </Row>
+          <Row type="flex" justify="center">
+          <Col span={24}>
           <DateRangePicker
             startDate={this.state.startDate}
             endDate = {this.state.endDate}
@@ -147,7 +182,10 @@ export default class ExpenseForm extends React.Component {
             startDateId= {"start"}
             endDateId={"end"}
           />
-
+          </Col>
+                    </Row>
+          <Row type="flex" justify="center">
+          <Col span={24}>
           <textarea
             placeholder="add a Description for your Challenge "
             value = {this.state.description}
@@ -155,8 +193,13 @@ export default class ExpenseForm extends React.Component {
           >
 
           </textarea>
-          <Button type="primary" onClick={this.onSubmit}> Submit </Button>
-      </form>
+          </Col>
+                    </Row>
+          <Row type="flex" justify="center">
+          <Col span={24}>
+          <Button type="primary" htmlType="submit" onClick={this.onSubmit}> Submit </Button>
+          </Col>
+          </Row>
       <div>
       {this.state.endDate == null || this.state.startDate == null?
           <p> Pick a date! </p>
