@@ -5,26 +5,50 @@ import './styles/styles.scss'; // import styles.css to our whole app
 import 'normalize.css/normalize.css'; // every import not starting with
 // redux tings:
 import configureStore from './store/configureStore';
-import {addExpense} from './actions/expenses';
-import {setTextFilter} from './actions/filters';
-import getVisibleExpenses from './selectors/expenses';
+import {addChallenge} from './actions/challenges';
 import {Provider} from 'react-redux';
 import moment from 'moment';
+import uuid from 'uuid';
 const store = configureStore();
-store.dispatch(addExpense({description: 'water bill', amount: 10000,createdAt: moment() - 100}));
-store.dispatch(addExpense({description: 'gas bill', amount: 1000,createdAt: moment() - 100000}));
-store.dispatch(addExpense({description: 'Rent', amount: 109500}));
+//seed data
+store.dispatch(addChallenge(
+    {
+        startDate: moment() + 10000,
+        endDate: moment() + 4000000,
+        description: 'going to jump rope 4 times a week',
+        goal: '2000 double unders in 30 mins',
+        frequency: 4,
+        userBet: 200
+        // skipping current bets, and progress as it is defaulted.
+        userId: uuid(),
+        challengeId: uuid()
+    }
+));
+store.dispatch(addChallenge(
+    {
+        startDate: moment() + 1000000,
+        endDate: moment() + 40000000,
+        description :'gonna get Marissa tonight'
+        goal: 'getting Marissa',
+        frequency: 1,
+        userBet: 10000
+        // skipping current bets, and progress,  as it is defaulted.
+        userId: uuid(),
+        challengeId: uuid()
+    }
+));
 const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filter);
-console.log('visible expenses:');
-console.log(visibleExpenses);
-/* We are providing a way for all our components to 
+/* We are providing a way for all our components to
 interact with redux. Create our store first, and pass it down as store. */
+/*const app = (
+<Provider store = {store}>
+  <AppRouter/>
+</Provider>
+)
+*/
 const app = (
-<Provider store = {store}>   
+<Provider store = {store}>
   <AppRouter/>
 </Provider>
 )
 ReactDOM.render(app, document.getElementById('app'));
-
-
