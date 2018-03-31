@@ -3,7 +3,7 @@
 import React from 'react';
 import moment from 'moment';
 import 'react-dates/initialize';
-import {SingleDatePicker} from 'react-dates';
+import {DateRangePicker} from 'react-dates';
 // import airbnb react date's CSS.
 import 'react-dates/lib/css/_datepicker.css';
 import 'antd/dist/antd.css';
@@ -12,14 +12,14 @@ export default class ExpenseForm extends React.Component {
   constructor(props){
     super(props);
     this.state ={
-    startDate: props.existingChallenge? props.existingChallenge.startDate : moment(),
-
-    endDate: props.existingChallenge? moment(props.existingChallenge.endDate) : moment(), // we use the unix timestamp
+    startDate: props.existingChallenge? moment(props.existingChallenge.startDate) : null,//moment(),
+    endDate: props.existingChallenge? moment(props.existingChallenge.endDate) : null,//moment(moment()+ 10000), // we use the unix timestamp
     goal: props.existingChallenge? props.existingChallenge.goal :'' ,
     description: props.existingChallenge? props.existingChallenge.description :'' ,
-    calendarFocused: false,
     userBet: props.existingChallenge? props.existingChallenge.userBet.toString() : undefined,
-    error: ''
+    frequency: props.existingChallenge? props.existingChallenge.frequency: undefined,
+    error: '',
+    calendarFocused: null,
   };
   }
 
@@ -41,6 +41,10 @@ export default class ExpenseForm extends React.Component {
     const goal = e.target.value;
     this.setState({goal});
   }
+  onFrequencyChange = (e) =>{
+    const frequency = e.target.value;
+    this.setState({frequency});
+  }
   onuserBetChange = (e) => {
     const userBet = e.target.value;
     if(!userBet || userBet.match(/^\d{1,}(\.\d{0,2})?$/))
@@ -54,6 +58,7 @@ export default class ExpenseForm extends React.Component {
   }
 
   onDatesChange = ({startDate,endDate}) => {
+      this.setState({startDate,endDate})
   console.log('starts and ends:');
     console.log(startDate);
     console.log(endDate);
@@ -63,7 +68,7 @@ export default class ExpenseForm extends React.Component {
     */
   };
 
-  onDateFocusChange = ({calendarFocused}) => {
+  onDateFocusChange = (calendarFocused) => {
     this.setState(() => ({calendarFocused}));
     console.log('ondatefocuschange');
 
@@ -73,17 +78,27 @@ export default class ExpenseForm extends React.Component {
     e.preventDefault(); // we don't want browser to do full page refresh.
     if (typeof this.state.userBet === 'undefined'
       ||
-      this.state.description === '')
-      this.setState(() => ({error: 'Please provide description and userBet.'}));
+      this.state.description === ''
+    ||
+        this.state.goal ===''
+    ||
+        typeof this.state.frequency === 'undefined'
+    ||
+        this.state.startDate =='null'
+    ||
+        typeof this.state.endDate == 'null'
+    )
+      this.setState(() => ({error: 'Please provide description, goal ,frequency, and userBet.'}));
     else{
       console.log('submitted ok ');
       this.setState(() => ({error: ''}));
       this.props.onSubmit({
         description: this.state.description,
         userBet: parseFloat(this.state.userBet,10), // parses string to real number
-        createdAt: this.state.createdAt.valueOf(), // parse moment object to get timestamp -
+        startDate: this.state.startDate.valueOf(), // parse moment object to get timestamp -
+        endDate: this.state.endDate.valueOf(), // parse moment object to get timestamp -
         //unix time in millis
-        note: this.state.note
+        goal: this.state.goal
       });
     }
   }
@@ -97,8 +112,8 @@ export default class ExpenseForm extends React.Component {
             type="text"
             placeholder="Add your goal"
             autoFocus
-            value = {this.state.description}
-            onChange = {this.onDescriptionChange}
+            value = {this.state.goal}
+            onChange = {this.onGoalChange}
           />
           <input
             type="number"
@@ -114,6 +129,12 @@ export default class ExpenseForm extends React.Component {
               <li>R: Realistic</li>
               <li>T: Time-based</li>
           </ul>
+          <input
+            type="number"
+            placeholder="How many times per week are you going to do this ting? "
+            value = {this.state.frequency}
+            onChange ={this.onFrequencyChange}
+          />
           <DateRangePicker
             startDate={this.state.startDate}
             endDate = {this.state.endDate}
@@ -129,12 +150,20 @@ export default class ExpenseForm extends React.Component {
 
           <textarea
             placeholder="add a Description for your Challenge "
-            value = {this.state.note}
-            onChange= {this.onNoteChange}
+            value = {this.state.description}
+            onChange= {this.onDescriptionChange}
           >
+
           </textarea>
           <Button type="primary" onClick={this.onSubmit}> Submit </Button>
       </form>
+      <div>
+      {this.state.endDate == null || this.state.startDate == null?
+          <p> Pick a date! </p>
+          :
+        <h1> {moment(this.state.endDate - this.state.startDate).format("DDD")} DAYS LEFT</h1>
+    }
+      </div>
       </div>
     );
   }

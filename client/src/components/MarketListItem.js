@@ -76,9 +76,3 @@ class MarketItemList extends React.Component{
 }
 
 export default MarketItemList;
-
-<<<<<<< HEAD
-
-export default MarketItemList;
-=======
->>>>>>> 7ff700ecd3e18ae109717e11e848d28762b324ef
