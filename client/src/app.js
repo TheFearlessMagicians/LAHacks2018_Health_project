@@ -8,7 +8,6 @@ import configureStore from './store/configureStore';
 import {addChallenge} from './actions/challenges';
 import {Provider} from 'react-redux';
 import moment from 'moment';
-import LandingPage from './components/Landing';
 import uuid from 'uuid';
 const store = configureStore();
 //seed data
@@ -49,7 +48,7 @@ interact with redux. Create our store first, and pass it down as store. */
 */
 
 
-ReactDOM.render(<LandingPage/>, document.getElementById('app'));
+ReactDOM.render(<AppRouter/>, document.getElementById('app'));
 
 
 

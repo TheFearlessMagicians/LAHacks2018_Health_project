@@ -4,6 +4,9 @@ import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
 import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
 import NotFoundPage from '../components/NotFoundPage';
+// ^ ignore all this imports
+import LandingPage from '../components/LandingPage';
+
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 //Header
 // Pages.
@@ -13,7 +16,7 @@ const AppRouter =()=> (
     <div>
       <Header/>
       <Switch> {/* Switch goes thru our routes in order (top to bottom), and renders the first matching route.*/}
-        <Route path="/" component={ExpenseDashboardPage} exact = {true}/> {
+        <Route path="/" component={LandingPage} exact = {true}/> {
         // we have to specify exact = {true} because otherwise, React-router will
         // render all inexact (exact={false})  pages that match 
         // with the path. 

@@ -3,13 +3,17 @@ import {Button, Icon} from  'antd';
 
 
 
-const LandingPage = () => (
+const LandingPage = (props) => (
 	<div className = "container__landing">
 		<Icon type="line-chart" />
-		<Button>Better</Button>
+		<Button onClick= {(e) => {
+			props.history.push('/BetterPage');
+		}}>Better</Button>
 
 		<Icon type="user-add" />
-		<Button>User</Button>
+		<Button onClick= {(e) => {
+			props.history.push('/UserPage');
+		}}>User</Button>
 	</div>
 );
 
