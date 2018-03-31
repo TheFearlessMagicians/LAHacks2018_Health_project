@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, Timeline, Icon } from 'antd';
+import { Modal, Button, Timeline, Icon, Input, notification } from 'antd';
 
 
 class MarketItemList extends React.Component{
@@ -12,8 +12,18 @@ class MarketItemList extends React.Component{
     });
   }
 
+  openNotificationWithIcon = (type) => {
+  notification[type]({
+    message: 'Bet Placed',
+    description: 'You have placed a bet of ',
+    duration: 3.0
+  	});
+  };
+
   handleOk = (e) => {
-    console.log(e);
+    this.openNotificationWithIcon('info');
+
+
     this.setState({
       visible: false,
     });
@@ -26,6 +36,8 @@ class MarketItemList extends React.Component{
     });
   }
 
+  
+
   render() {
     return (
       <div>
@@ -35,6 +47,8 @@ class MarketItemList extends React.Component{
         <Modal
           title="Basic Modal"
           visible={this.state.visible}
+          okText = "Make a bet"
+          title = "Challenge Details"
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
@@ -46,19 +60,19 @@ class MarketItemList extends React.Component{
 			    <Timeline.Item dot={<Icon type="clock-circle-o" style={{ fontSize: '16px' }} />} color="red">Challenge ends on {this.props.endDate}</Timeline.Item>
 			  </Timeline>
 		  </div>
+		  <Input type = "number" placeholder="Insert Your Bet" />
+
+<<<<<<< HEAD
+=======
 
 
-
+>>>>>>> 073cacea34a0714ec99188142f4e30b9bd1f3f72
         </Modal>
+
+
       </div>
     );
   }
 }
 
 export default MarketItemList;
-
-<<<<<<< HEAD
-
-export default MarketItemList;
-=======
->>>>>>> 7ff700ecd3e18ae109717e11e848d28762b324ef
