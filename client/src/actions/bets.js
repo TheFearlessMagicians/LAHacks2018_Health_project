@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 export const addBet = ( newBet) => ({
       type: 'ADD_BET',
       newBet

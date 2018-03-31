@@ -37,14 +37,27 @@ store.dispatch(addChallenge(
         challengeId: uuid()
     }
 ));
+store.dispatch(addChallenge(
+    {
+        startDate: moment() + 100000000,
+        endDate: moment() + 40000000000,
+        description :'Sketching a drawing 4 time sa week',
+        goal: 'Becoming good at drawing',
+        frequency: 4,
+        userBet: 8000,
+        // skipping current bets, and progress,  as it is defaulted.
+        userId: uuid(),
+        challengeId: uuid()
+    }
+));
 /* We are providing a way for all our components to
 interact with redux. Create our store first, and pass it down as store. */
-/*const app = (
+const app = (
 <Provider store = {store}>
   <AppRouter/>
 </Provider>
 )
-*/
 
 
-ReactDOM.render(<AppRouter/>, document.getElementById('app'));
+
+ReactDOM.render( app, document.getElementById('app'));

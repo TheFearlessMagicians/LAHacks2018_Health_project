@@ -30,7 +30,7 @@
                         isFor: true, // for or against.
                 }
         ],
-        // storing individual  player info. the below will change depending on whether you pick
+        // storing individual player info. the below will change depending on whether you pick
         // better, or user.
         player: {
                 type: 'user' // OR better.
