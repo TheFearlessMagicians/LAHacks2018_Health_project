@@ -81,7 +81,6 @@ router.put("/contract/:address", (req, res) => {
                 contract.active = false;
                 res.json({ "message": "Contract updated succesfully." });
             }
-
         }
     });
 });
