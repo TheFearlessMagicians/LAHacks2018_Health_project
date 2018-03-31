@@ -6,7 +6,7 @@ import EditExpensePage from '../components/EditExpensePage';
 import NotFoundPage from '../components/NotFoundPage';
 // ^ ignore all this imports
 import LandingPage from '../components/LandingPage';
-
+import MarketDashBoardPage from '../components/MarketDashBoardPage';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 //Header
 // Pages.
@@ -24,6 +24,7 @@ const AppRouter =()=> (
         // the root and settings page will both be rendered. (which is sometimes
         // desirable, most times not.
         }
+        <Route path="/MarketDashBoardPage" component={MarketDashBoardPage}/>
         <Route path="/create" component={AddExpensePage}/> {/* We have to change
         //webpack config to tell dev server to always show index.html file for 404 pages
         // i.e. when we tried to request to server but nothing is found (cos we're using

@@ -19,7 +19,7 @@ class LandingPage extends React.Component {
                     alert('put your name please!');
                 else{
                     this.props.dispatch(addBetter({name:this.state.name}))
-        			this.props.history.push('/BetterPage');
+        			this.props.history.push('/MarketDashBoardPage');
                 }
     		}}>Better</Button>
 
