@@ -62,6 +62,11 @@ class MarketItemList extends React.Component{
 		  </div>
 		  <Input type = "number" placeholder="Insert Your Bet" />
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 073cacea34a0714ec99188142f4e30b9bd1f3f72
         </Modal>
 
 
@@ -72,3 +77,8 @@ class MarketItemList extends React.Component{
 
 export default MarketItemList;
 
+<<<<<<< HEAD
+
+export default MarketItemList;
+=======
+>>>>>>> 7ff700ecd3e18ae109717e11e848d28762b324ef
