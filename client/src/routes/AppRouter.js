@@ -18,17 +18,17 @@ const AppRouter =()=> (
       <Switch> {/* Switch goes thru our routes in order (top to bottom), and renders the first matching route.*/}
         <Route path="/" component={LandingPage} exact = {true}/> {
         // we have to specify exact = {true} because otherwise, React-router will
-        // render all inexact (exact={false})  pages that match 
-        // with the path. 
+        // render all inexact (exact={false})  pages that match
+        // with the path.
         // e..g if the above isn't exact, then when we go to /settings, then
-        // the root and settings page will both be rendered. (which is sometimes 
+        // the root and settings page will both be rendered. (which is sometimes
         // desirable, most times not.
         }
         <Route path="/create" component={AddExpensePage}/> {/* We have to change
         //webpack config to tell dev server to always show index.html file for 404 pages
         // i.e. when we tried to request to server but nothing is found (cos we're using
         // client side routing).
-        // . Otherwise, when we get /settings, this will be an actual GET request 
+        // . Otherwise, when we get /settings, this will be an actual GET request
         // to the server, even though we want client-side routing.*/}
         <Route path = "/edit/:id" component={EditExpensePage} />
         <Route path = "/edit" component={ErrorEdit} />
@@ -38,5 +38,3 @@ const AppRouter =()=> (
   </BrowserRouter>
 );
 export default AppRouter;
-
-

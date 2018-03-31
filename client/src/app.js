@@ -18,7 +18,7 @@ store.dispatch(addChallenge(
         description: 'going to jump rope 4 times a week',
         goal: '2000 double unders in 30 mins',
         frequency: 4,
-        userBet: 200
+        userBet: 200,
         // skipping current bets, and progress as it is defaulted.
         userId: uuid(),
         challengeId: uuid()
@@ -28,16 +28,15 @@ store.dispatch(addChallenge(
     {
         startDate: moment() + 1000000,
         endDate: moment() + 40000000,
-        description :'gonna get Marissa tonight'
+        description :'gonna get Marissa tonight',
         goal: 'getting Marissa',
         frequency: 1,
-        userBet: 10000
+        userBet: 10000,
         // skipping current bets, and progress,  as it is defaulted.
         userId: uuid(),
         challengeId: uuid()
     }
 ));
-const state = store.getState();
 /* We are providing a way for all our components to
 interact with redux. Create our store first, and pass it down as store. */
 /*const app = (
@@ -49,6 +48,3 @@ interact with redux. Create our store first, and pass it down as store. */
 
 
 ReactDOM.render(<AppRouter/>, document.getElementById('app'));
-
-
-

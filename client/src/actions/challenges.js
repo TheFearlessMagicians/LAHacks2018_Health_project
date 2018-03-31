@@ -3,8 +3,9 @@ export const addChallenge = ( newChallenge) => ({
   type: 'ADD_CHALLENGE',
   newChallenge: {
       ...newChallenge,
-      currentBets: [] // defaulting this. There shouldn't be any bettings
+      currentBets: [], // defaulting this. There shouldn't be any bettings
       // as soon as challenge is set up.
+      progress : []
   }
 });
 
