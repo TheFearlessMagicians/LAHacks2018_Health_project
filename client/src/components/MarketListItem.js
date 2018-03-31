@@ -36,7 +36,7 @@ class MarketItemList extends React.Component{
     });
   }
 
-  
+
 
   render() {
     return (
