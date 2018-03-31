@@ -1,14 +1,36 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-const Header = () => (
-  <div>
-    <NavLink to="/" activeClassName="is-active" exact = {true}>login</NavLink>
-    <NavLink to="/create" activeClassName="is-active" exact = {true}> create Challenge</NavLink>
-    <NavLink to="/edit" activeClassName="is-active" exact = {true}>edit Challenge</NavLink>
-    <NavLink to="/help" activeClassName="is-active" exact = {true}>help</NavLink>
-    {/* We need this Link component, so that we route without GETting to the server.
-    When linking internally, we need Link so that we take advantage of cheap client-side
-    routing. */}
-  </div>);
+import {connect} from 'react-redux';
 
-export default Header;
+const Navigation = (props) => {
+    if( typeof props.player === 'undefined')
+        return (  <NavLink to="/" activeClassName="is-active" exact = {true}>login</NavLink>);
+    return (
+        <div>
+            {props.player.type === 'user' && (
+            <div>
+            <NavLink to="/userDashboard" activeClassName="is-active" exact = {true}> My Challenges </NavLink>
+            <NavLink to="/createChallenge" activeClassName="is-active" exact = {true}>New Challenge</NavLink>
+            </div>)
+            }
+            {props.player.type === 'better' &&(
+                <NavLink to="/marketDashboard" activeClassName="is-active" exact = {true}> Market </NavLink>
+                )
+            }
+
+         </div>
+  );
+  };
+/*
+
+class Navigation extends React.Component {
+    render(){
+        return (
+    <div> navigation here</div>
+);}
+}*/
+const mapStateToProps = (state) =>({
+    player: state.player
+});
+//export default Navigation;
+export default connect(mapStateToProps)(Navigation);

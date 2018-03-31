@@ -5,13 +5,10 @@ import MarketListItem from './MarketListItem'
 
 const MarketList = (props) => (
   <div> 
-    <h1>Challanges to bet: </h1>
-    <ul>
-      {props.challenges.map((challenge)=> (
-        <MarketListItem key= {challenge.challengeId} {...challenge}/> 
-         <li key = {expense.id}> {expense.description}: ${expense.amount / 100}</li>
-      ))}
-  </ul>
+      <h1>Challanges to bet: </h1>
+	  {props.challenges.map((challenge)=> (
+	    <MarketListItem key= {challenge.challengeId} {...challenge}/> 
+	  ))}
   </div>
 );
 
@@ -23,5 +20,4 @@ const ConnectedMarketList = connect(mapStateToProps)(MarketList);
 
 
 
-
-export default MarketList;
+export default ConnectedMarketList;//MarketList;

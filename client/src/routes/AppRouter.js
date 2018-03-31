@@ -1,12 +1,15 @@
 import React from 'react';
 import Header from '../components/Header';
 import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
-import AddExpensePage from '../components/AddExpensePage';
+import Page from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
+import AddChallengePage from '../components/AddChallengePage';
 import NotFoundPage from '../components/NotFoundPage';
+import MarketDashboardPage from '../components/MarketDashboardPage';
+import UserDashboardPage from '../components/UserDashboardPage';
 // ^ ignore all this imports
 import LandingPage from '../components/LandingPage';
-
+import MarketDashBoardPage from '../components/MarketDashBoardPage';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 //Header
 // Pages.
@@ -14,7 +17,7 @@ const ErrorEdit = () => (<div> Error. ID not found. What item do you want to edi
 const AppRouter =()=> (
   <BrowserRouter>
     <div>
-      <Header/>
+     <Header/>
       <Switch> {/* Switch goes thru our routes in order (top to bottom), and renders the first matching route.*/}
         <Route path="/" component={LandingPage} exact = {true}/> {
         // we have to specify exact = {true} because otherwise, React-router will
@@ -24,10 +27,10 @@ const AppRouter =()=> (
         // the root and settings page will both be rendered. (which is sometimes
         // desirable, most times not.
         }
-        <Route path="/create" component={AddExpensePage}/> {/* We have to change
-        //webpack config to tell dev server to always show index.html file for 404 pages
-        // i.e. when we tried to request to server but nothing is found (cos we're using
-        // client side routing).
+        <Route path="/marketDashboard" component = {MarketDashboardPage} exact={true} />
+        <Route path="/userDashboard" component = {UserDashboardPage} exact={true} />
+        <Route path="/createChallenge" component={AddChallengePage}/> {/* We have to change
+
         // . Otherwise, when we get /settings, this will be an actual GET request
         // to the server, even though we want client-side routing.*/}
         <Route path = "/edit/:id" component={EditExpensePage} />
