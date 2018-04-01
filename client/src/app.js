@@ -89,13 +89,13 @@ axios.get(`${SERVERURL}/contracts`)
                 betAgainst: await contract.methods.totalBetAgainst().call({
                     from: account
                 }),
-                workoutsDone: await contract.methods.workoutCount().call({
+                workoutsComplete: await contract.methods.workoutCount().call({
                     from:account
-                })
+                }),
                 userId: await contract.methods.owner().call({
                     from: account
                 }),
-                challengeId: contract.options.address, 
+                challengeId: contract.options.address,
         }
     )
   )
