@@ -97,7 +97,7 @@ axios.get(`${SERVERURL}/contracts`)
                             }),
                             challengeId: contract.options.address
                         })
-                    )
+                    );
             })
         })
         .catch((error) => {

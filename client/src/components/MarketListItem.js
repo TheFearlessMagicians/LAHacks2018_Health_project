@@ -1,8 +1,10 @@
 import React from 'react';
+import web3 from '../blockchain/web3';
 import { Modal, Button, Timeline, Icon, Input, notification,Carousel, Progress } from 'antd';
 import {List,Avatar} from 'antd';
 import moment from 'moment';
 import 'antd/dist/antd.css';
+import getContract from '../blockchain/contract';
 
 
 class MarketListItem extends React.Component{
@@ -113,8 +115,21 @@ class MarketListItem extends React.Component{
             type = "number"
             placeholder="Insert Your Bet"
             value={this.state.bet}
-            onChange={(e)=>{
+            onChange={async (e)=>{
                 this.setState({bet:e.target.value})
+                const accounts = await web3.eth.getAccounts();
+                const account = accounts[0];
+                const contract = getContract(this.props.challengeId);
+                try {
+                    await contract.methods.submitBet().send({
+                    from: account,
+                    value: web3.utils.toWei(String(e.target.value),'ether'),
+                    gas: "300000"
+                  });
+                } catch (error){
+                  console.log(error);
+                }
+                
             }}/>
 
         </Modal>
