@@ -22,11 +22,9 @@ class LandingPage extends React.Component {
                             this.setState({ name: e.target.value });
                         }}
                     />
-                    <Icon
-                        type="line-chart"
-                        style={{ fontSize: 16, color: "black" }}
-                    />
+                    
                     <Button
+                        className = "container__landing__bar__button"
                         onClick={e => {
                             if (this.state.name === "")
                                 alert("put your name please!");
@@ -38,13 +36,14 @@ class LandingPage extends React.Component {
                             }
                         }}
                     >
+                        <Icon
+                            type="line-chart"
+                            style={{ fontSize: 16, color: "black" }}
+                        />
                         Better
                     </Button>
 
-                    <Icon
-                        type="user-add"
-                        style={{ fontSize: 16, color: "black" }}
-                    />
+                    
                     <Button
                         onClick={e => {
                             if (this.state.name === "")
@@ -57,6 +56,10 @@ class LandingPage extends React.Component {
                             }
                         }}
                     >
+                        <Icon
+                            type="user-add"
+                            style={{ fontSize: 16, color: "black" }}
+                        />
                         User
                     </Button>
                 </div>

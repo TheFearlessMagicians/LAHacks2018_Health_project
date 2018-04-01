@@ -28,18 +28,17 @@ class UserChallengesListItem2 extends React.Component{
 
   handleOk = (e) => {
 
-     if(this.props.workoutsCompleted.length + 1 === this.getTotalExpectedworkouts()){
-         
+     if(this.props.workoutsCompleted.length + 1 === this.getTotalExpectedworkouts()){  
             const reducer = (accumulator, currentValue) => accumulator + currentValue;
-            const totalWorkout = this.props.workoutsCompleted.reduce(reducer);
+            const totalWorkout = this.props.workoutsCompleted.reduce(reducer) + this.state.caloriesPerWorkout;
             const totalExpectedWorkout = this.props.caloriesPerWorkout * this.getTotalExpectedworkouts();
             const exceedCalorieGoalBy = totalWorkout - totalExpectedWorkout;
             this.props.onCompletion(this.props.challengeId, exceedCalorieGoalBy);
 
             if(exceedCalorieGoalBy >= 0){
-              const totalBets = this.props.bets.reduce(reducer);
-              const userBonus = totalBets * (1 / (1 + Math.exp(x)) - 1);
-              const totalgains = this.props.userBet + userBonus;
+              const totalBets = this.props.bets.length !== 0 ? this.props.bets.reduce(reducer) : 0;
+              const userBonus = totalBets * (1 / (1 + Math.pow(2.718281828459045, 1)) - 1);
+              const totalgains = this.props.userBet + userBonus;  
               this.openNotificationWithIcon('success','CONGRATULATIONS', `Challenge Complete! You have exceed your calories goal by ${exceedCalorieGoalBy} calories. We have deposited ${this.props.userBet} with a bonus of ${userBonus} for a total of ${totalgains}`); 
             }
             else
