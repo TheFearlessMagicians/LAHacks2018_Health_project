@@ -60,7 +60,7 @@ class MarketItemList extends React.Component{
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <p>Description: {this.props.reward}</p>
+          <p>Description: {this.props.description}</p>
           <p>User's Bet: {this.props.userBet}</p>
           <h3>{moment(this.props.endDate - this.props.startDate).format("DDD")} DAYS LEFT</h3>
           <div>
