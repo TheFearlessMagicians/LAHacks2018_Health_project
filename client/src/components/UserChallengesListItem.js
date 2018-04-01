@@ -75,37 +75,27 @@ class UserChallengesListItem2 extends React.Component {
 
                     let data = processReturn(raw);
 
-                    let workouts = await exercise.methods.workoutCount().call({
-                        from: accounts[0],
-                    });
+                    let workouts = await exercise.methods.workoutCount().call();
 
-                    let frequency = await exercise.methods.frequency().call({
-                        from: accounts[0],
-                    });
+                    let frequency = await exercise.methods.frequency().call();
 
-                    let balance = await exercise.methods.getBalance().call({
-                        from: accounts[0],
-                    });
+                    let balance = await exercise.methods.getBalance().call();
 
                     await exercise.methods.pay(accounts[0], balance * workouts / frequency).send({
-                        from: accounts[0],
+                        from: account,
                         gas: 3000000
                     });
 
-                    balance = await exercise.methods.getBalance().call({
-                        from: accounts[0],
-                    });
+                    balance = await exercise.methods.getBalance().call();
 
 
                     for (let i = 0; i < data.length; i++) {
                         await exercise.methods.pay(data[i][0], balance * data[i][1]).send({
-                            from: accounts[0],
+                            from: account,
                             gas: 3000000
                         });
                     }
-                    balance = await exercise.methods.getBalance().call({
-                        from: accounts[0],
-                    });
+                    balance = await exercise.methods.getBalance().call();
                   }
 
                   process();

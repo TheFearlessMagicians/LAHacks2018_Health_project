@@ -83,18 +83,18 @@ router.post("/contract", (req, res) => {
 
 
 router.post ("/deploy", async (req,res)=>{
-    const index = Number(req.body.index);
+    const index = Number(req.body.index)%2;
 
     const description = req.body.description;
     const goal = req.body.goal;
     const endDate = req.body.endDate;
 
     const frequency = req.body.frequency;
-    const calorieTarget = req.body.calorieTarget;
+    const calorieTarget = req.body.caloriesPerWorkout;
 
     const provider = new HDWalletProvider(mnemonic,"https://rinkeby.infura.io/orDImgKRzwNrVCDrAk5Q",index,2);
     const web3 = new Web3(provider);
-    
+
     const accounts =  await web3.eth.getAccounts();;
     const account = accounts[0];
 
