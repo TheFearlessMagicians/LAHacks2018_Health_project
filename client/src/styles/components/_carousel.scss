@@ -1,0 +1,31 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-carousel .slick-slide{
+	background: #355C7D;
+}
+
+.ant-carousel .slick-slide .ant-timeline {
+	margin: 10px 10px 12px;
+	color: #D8CFCF;
+}
+
+.progress-bar{
+	margin: 15px 10px 20px;
+}
+
+.ant-carousel .slick-slide h4
+{
+	margin-right: 20px;
+	color: #D8CFCF;
+}
+
+.ant-carousel .slick-slide span.ant-progress-text{
+	color: #D8CFCF;
+}
+
+.modal-description{
+	border-bottom: 1px solid black;
+}

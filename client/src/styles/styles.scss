@@ -1,7 +1,9 @@
 @import './base/settings';
-@import './base/base'; // leave off the underscore for partial scss files.
+@import './base/base'; 
 @import './components/landing';
-@import './components/_challange-form';
+@import './components/challange-form';
 @import './components/navigation';
-@import './components/_UserchallengeListItem';
+@import './components/UserchallengeListItem';
+@import './components/carousel';
 @import './components/header';
+
