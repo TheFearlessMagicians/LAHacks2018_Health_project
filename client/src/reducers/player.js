@@ -22,6 +22,17 @@ const playerReducer = (state = defaultPlayerState, action) => {
             currentBets:[],
             bettingHistory:[]
         }
+    case 'DELETE_PLAYER':
+    return {
+        ...state,
+        type:'',
+        id:uuid(),
+        currentChallenges:[],
+        challengesHistory:[],
+        currentBets:[],
+        bettingHistory:[],
+        name:''
+    }
     default:
       console.log(`PLAYER REDUCER DEFAULTING STATE. got action: ${action.type}`);
       return state;

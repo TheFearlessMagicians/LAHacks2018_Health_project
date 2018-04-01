@@ -1,9 +1,12 @@
 import React from 'react';
 import {Button, Icon, Input} from  'antd';
 import {connect} from 'react-redux';
-import {addUser,addBetter} from '../actions/player';
+import {addUser,addBetter,removePlayer} from '../actions/player';
 
 class LandingPage extends React.Component {
+    componentDidMount(){
+        this.props.dispatch(removePlayer());
+    }
     state = {
         name:''
     }
