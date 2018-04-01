@@ -81,11 +81,18 @@ axios.get(`${SERVERURL}/contracts`)
                 frequency:  await contract.methods.frequency().call({
                     from: account
                 }),
-                description: 'BLANK',
-                goal: 'BLANK',
-                userBet: 10000,
-                userId: 'BLANK',
-                challengeId: 'BLANK'
+                description: obj.description,
+                goal: obj.goal,
+                userBet: await web3.eth.getBalance(contract.address) - await contract.methods.totalBetAgainst().call({
+                    from: account
+                }),
+                betAgainst: await contract.methods.totalBetAgainst().call({
+                    from: account
+                }),
+                userId: await contract.methods.owner().call({
+                    from: account
+                }),
+                challengeId: contract.options.address, 
         }
     )
   )
