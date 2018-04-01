@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import MarketListItem from './MarketListItem'
+import MarketListItem from './MarketListItem';
+
 
 
 const MarketList = (props) => (
-  <div> 
-      <h1>Challanges to bet: </h1>
+  <div className = "widget-heaader"> 
+      <h1 className = "widget-header__title">Challanges to bet: </h1>
 	  {props.challenges.map((challenge)=> (
 	    <MarketListItem key= {challenge.challengeId} {...challenge}/> 
 	  ))}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Modal, Button, Timeline, Icon, Input, notification } from 'antd';
+import moment from 'moment';
+import 'antd/dist/antd.css';
 
 
 class MarketItemList extends React.Component{
@@ -22,8 +24,6 @@ class MarketItemList extends React.Component{
 
   handleOk = (e) => {
     this.openNotificationWithIcon('info');
-
-
     this.setState({
       visible: false,
     });
@@ -40,9 +40,8 @@ class MarketItemList extends React.Component{
 
   render() {
     return (
-      <div>
-      	<p>{this.props.description}</p>
-
+      <div className = "market-item">
+      	<p className = "market-item__text">{this.props.description}</p>
         <Button type="primary" onClick={this.showModal}>Click for More Info</Button>
         <Modal
           title="Basic Modal"
@@ -54,10 +53,11 @@ class MarketItemList extends React.Component{
         >
           <p>Description: {this.props.reward}</p>
           <p>User's Bet: {this.props.userBet}</p>
+          <h3>{moment(this.props.endDate - this.props.startDate).format("DDD")} DAYS LEFT</h3>
           <div>
 	          <Timeline>
-			    <Timeline.Item>User started the challenge on {this.props.startDate}</Timeline.Item>
-			    <Timeline.Item dot={<Icon type="clock-circle-o" style={{ fontSize: '16px' }} />} color="red">Challenge ends on {this.props.endDate}</Timeline.Item>
+			    <Timeline.Item>User started the challenge on {moment(this.props.startDate).format("DDD")}</Timeline.Item>
+			    <Timeline.Item dot={<Icon type="clock-circle-o" style={{ fontSize: '16px' }} />} color="red">Challenge ends on {moment(this.props.endDate).format("DDD")}</Timeline.Item>
 			  </Timeline>
 		  </div>
 		  <Input type = "number" placeholder="Insert Your Bet" />
