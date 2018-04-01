@@ -18,7 +18,7 @@ class LandingPage extends React.Component {
             <div className="container__landing ">
                 <div className ="container__landing__bar">
                  <TypeWriter typing={1} fixed={true}>
-                    <h2> Start something, and do it. </h2>
+                    <h1> Start something, and do it.</h1>
                     </TypeWriter>
                     <TypeWriter typing={this.state.showNaySayer} fixed={true}>
                        <h2> Or, become a naysayer and bet that they won't.  </h2>
