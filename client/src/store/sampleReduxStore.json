@@ -7,16 +7,10 @@
                         endDate: 'MOMENTOBJECTHERE',
                         description: 'description here',
                         goal: 'goalstring here',
-                        frequency: 4,
+                        frequency: 4, // how many times per week
                         userBet: 400, // how much user is betting against himself.
-                        progress: [
-                                true,
-                                false,
-                                true,
-                                true,
-                                false
-                                 //etc
-                        ],
+                        workoutsCompleted: 4, // make progress bar for this, comparing total amount of workouts
+                        // in challenge vs workouts completed.
                         userId: '1da20cblablabla',
                         challengeId:'1209adjsblablabla'
                 }

@@ -41,8 +41,8 @@ export default class UserChallengeForm extends React.Component {
     const goal = e.target.value;
     this.setState({goal});
   }
-  onFrequencyChange = (e) =>{
-    const frequency = e.target.value;
+  onFrequencyChange = (val) =>{
+    const frequency = val;
     this.setState({frequency});
   }
   onuserBetChange = (val) => {
@@ -99,28 +99,7 @@ export default class UserChallengeForm extends React.Component {
     }
   }
   render() {
-      const formItemLayout = {
-     labelCol: {
-       xs: { span: 24 },
-       sm: { span: 8 },
-     },
-     wrapperCol: {
-       xs: { span: 24 },
-       sm: { span: 16 },
-     },
-   };
-   const tailFormItemLayout = {
-      wrapperCol: {
-        xs: {
-          span: 24,
-          offset: 0,
-        },
-        sm: {
-          span: 16,
-          offset: 8,
-        },
-      },
-    };
+
     return (
       <div>
         {this.state.error && <p> {this.state.error}</p>}
