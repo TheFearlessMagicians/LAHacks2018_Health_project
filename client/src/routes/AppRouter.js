@@ -28,7 +28,9 @@ const AppRouter =()=> (
         <Route path="/userDashboard" component = {UserDashboardPage} exact={true} />
         <Route path="/createChallenge" component={AddChallengePage}/>
 
+
         <Route component={NotFoundPage} />
+
       </Switch>
     </div>
   </BrowserRouter>
