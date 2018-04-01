@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 export const addChallenge = ( newChallenge) => ({
   type: 'ADD_CHALLENGE',
   newChallenge: {

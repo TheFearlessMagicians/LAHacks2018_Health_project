@@ -31,18 +31,6 @@ store.dispatch(addChallenge({
     challengeId: uuid()
 }));
 store.dispatch(addChallenge({
-    startDate: moment() - 100000000,
-    endDate: moment() + 1000000000,
-    description: 'gonna get Marissa tonight',
-    goal: 'getting Marissa',
-    frequency: 1,
-    userBet: 10000,
-    caloriesPerWorkout: 300,
-    // skipping current bets, and progress,  as it is defaulted.
-    userId: uuid(),
-    challengeId: uuid()
-}));
-store.dispatch(addChallenge({
     startDate: moment() - 10000000,
     endDate: moment() + 90000000000,
     description: 'Sketching a drawing  with my foot 4 times a week while doing pushups',
@@ -93,10 +81,10 @@ axios.get(`${SERVERURL}/contracts`)
             console.log(error);
         });
 
-        const app = ( 
-            <Provider store = { store }> 
-                <AppRouter style = { { backgroundImage: `url(sustaining-motivation.jpg)` } }/> 
-            </Provider> 
+        const app = (
+            <Provider store = { store }>
+                <AppRouter style = { { backgroundImage: `url(sustaining-motivation.jpg)` } }/>
+            </Provider>
             );
 
         ReactDOM.render(app, document.getElementById('app'));

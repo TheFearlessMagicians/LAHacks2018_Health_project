@@ -83,7 +83,11 @@ router.post("/contract", (req, res) => {
 
 
 router.post ("/deploy", async (req,res)=>{
-    const index = Number(req.body.index);
+
+   res.header('Access-Control-Allow-Origin', 'URLs to trust of allow');
+   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+   res.header('Access-Control-Allow-Headers', 'Content-Type');
+    const index = Number(req.body.index) % 2;
 
     const description = req.body.description;
     const goal = req.body.goal;
@@ -92,9 +96,9 @@ router.post ("/deploy", async (req,res)=>{
     const frequency = req.body.frequency;
     const calorieTarget = req.body.calorieTarget;
 
-    const provider = new HDWalletProvider(mnemonic,"https://rinkeby.infura.io/orDImgKRzwNrVCDrAk5Q",index,2);
+    const provider = new HDWalletProvider(mnemonic,"https://rinkeby.infura.io/orDImgKRzwNrVCDrAk5Q"/*,index,2*/);
     const web3 = new Web3(provider);
-    
+
     const accounts =  await web3.eth.getAccounts();;
     const account = accounts[0];
 
