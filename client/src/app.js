@@ -68,9 +68,13 @@ axios.get(`${SERVERURL}/contracts`)
   .then(function (response) {
       console.log('response:');
       console.log(response);
-    response.data.forEach(async (obj)=> {
+    //response.data.forEach(async (obj)=> {
         //TODO : what is accounts?
-        const contract = await getContract(obj.address);
+        //const contract = await getContract(obj.address);
+        const a = async () => {
+        const contract = await getContract('0x4D2D24899c0B115a1fce8637FCa610Fe02f1909e');
+        //const contract = await getContract('0x4D2D24899c0B115a1fce8627FCa610Fe02f1901b');
+
         console.log('contract:');
         console.log(contract);
         store.dispatch(addChallenge(
@@ -102,7 +106,12 @@ axios.get(`${SERVERURL}/contracts`)
         }
     )
   )
-})})
+}
+a();
+}
+)
+
+
   .catch(function (error) {
       console.log('AXIOS ERROR');
     console.log(error);
