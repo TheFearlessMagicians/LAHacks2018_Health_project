@@ -33,6 +33,7 @@ export default class UserChallengeForm extends React.Component {
         ? props.existingChallenge.frequency
         : undefined,
       error: "",
+      caloriesPerWorkout:0,
       calendarFocused: null
     };
   }
@@ -55,6 +56,10 @@ export default class UserChallengeForm extends React.Component {
     const goal = e.target.value;
 
     this.setState({goal});
+  }
+  onCaloriesChange = (val) =>{
+      const caloriesPerWorkout = val;
+      this.setState({caloriesPerWorkout});
   }
   onFrequencyChange = (val) =>{
     const frequency = val;
@@ -94,10 +99,11 @@ export default class UserChallengeForm extends React.Component {
       this.state.goal === "" ||
       typeof this.state.frequency === "undefined" ||
       this.state.startDate == "null" ||
-      typeof this.state.endDate == "null"
+      typeof this.state.endDate == "null"||
+      this.caloriesPerWorkout == 0
     )
       this.setState(() => ({
-        error: "Please provide description, goal ,frequency, and userBet."
+        error: "Please provide description, goal , dates, frequency, and userBet, calories per workout."
       }));
     else {
       console.log("submitted ok ");
@@ -108,7 +114,8 @@ export default class UserChallengeForm extends React.Component {
         startDate: this.state.startDate.valueOf(), // parse moment object to get timestamp -
         endDate: this.state.endDate.valueOf(), // parse moment object to get timestamp -
         //unix time in millis
-        goal: this.state.goal
+        goal: this.state.goal,
+        caloriesPerWorkout:this.state.caloriesPerWorkout
       });
     }
   };
@@ -189,19 +196,20 @@ export default class UserChallengeForm extends React.Component {
           </FormItem>
 
           <FormItem
-          // {...formItemLayout}
-          // label="Calories Goal"
-          // >
-          //   <InputNumber
-          //       size="large"
-          //       formatter={value =>
-          //         `${value} calories`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-          //       }
-          //       placeholder="Place your bet here"
-          //       value={this.state.}
-          //       onChange={this.}
-          //   />
-          // </FormItem>
+
+          {...formItemLayout}
+          label="Calories Goal"
+          >
+            <InputNumber
+                size="large"
+                formatter={value =>
+                  `${value} calories`
+                }
+                placeholder="How many calories per workout?"
+                value={this.state.caloriesPerWorkout}
+                onChange={this.onCaloriesChange}
+            />
+          </FormItem>
 
           />
 

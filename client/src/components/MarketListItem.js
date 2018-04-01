@@ -61,11 +61,11 @@ class MarketItemList extends React.Component{
         >
           <p>Description: {this.props.description}</p>
           <p>User's Bet: {this.props.userBet}</p>
-          <h3>{moment(this.props.endDate - this.props.startDate).format("DDD")} DAYS LEFT</h3>
+          <h3>{moment(this.props.endDate).from(moment(this.props.startDate))}</h3>
           <div>
 	          <Timeline>
-			    <Timeline.Item>User started the challenge on {moment(this.props.startDate).format("DDD")}</Timeline.Item>
-			    <Timeline.Item dot={<Icon type="clock-circle-o" style={{ fontSize: '16px' }} />} color="red">Challenge ends on {moment(this.props.endDate).format("DDD")}</Timeline.Item>
+			    <Timeline.Item>User started the challenge on {moment(this.props.startDate).format("MM DD YYYY")}</Timeline.Item>
+			    <Timeline.Item dot={<Icon type="clock-circle-o" style={{ fontSize: '16px' }} />} color="red">Challenge ends on {moment(this.props.endDate).format("MM DD YYYY")}</Timeline.Item>
 			  </Timeline>
 		  </div>
 		  <Input type = "number" placeholder="Insert Your Bet" />

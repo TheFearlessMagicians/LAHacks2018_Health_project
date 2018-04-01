@@ -39,8 +39,9 @@ router.get("/contract/:address", (req, res) => {
 
 router.post("/contract", (req, res) => {
     let address = req.body.address;
-    let description = req.body.desscription;
+    let description = req.body.description;
     let goal = req.body.goal;
+    let endDate = req.body.endDate;
     if (address) {
         Contract.find({
             address: address
@@ -54,7 +55,8 @@ router.post("/contract", (req, res) => {
                     Contract.create({
                         address: address,
                         description: description,
-                        goal: goal
+                        goal: goal,
+                        endDate: endDate
                     }, err => {
                         if (err) {
                             res.json({

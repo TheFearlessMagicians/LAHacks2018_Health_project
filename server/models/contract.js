@@ -6,6 +6,9 @@ let ContractSchema = new mongoose.Schema({
 		default: Date.now
 	},
 	address: String,
+	description: String,
+	goal: String,
+	endDate: Number,
 	active: {
 		type: Boolean,
 		default: true

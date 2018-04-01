@@ -11,7 +11,6 @@ const playerReducer = (state = defaultPlayerState, action) => {
             ...action.newPlayer,
             type: 'user',
             id: uuid(),
-            currentChallenges:[],
             challengesHistory:[]
         }
     case 'ADD_BETTER':
@@ -19,7 +18,6 @@ const playerReducer = (state = defaultPlayerState, action) => {
             ...action.newPlayer,
             type: 'better',
             id: uuid(),
-            currentBets:[],
             bettingHistory:[]
         }
     case 'DELETE_PLAYER':
