@@ -10,6 +10,7 @@ import "antd/dist/antd.css";
 import { Form,Button, Row, Col, Input, InputNumber, Alert } from "antd";
 
 const FormItem = Form.Item;
+const { TextArea } = Input;
 
 export default class UserChallengeForm extends React.Component {
   constructor(props) {
@@ -137,7 +138,7 @@ export default class UserChallengeForm extends React.Component {
 
     return (
       <div >
-        {this.state.error && <p> {this.state.error}</p>}
+        {this.state.error && <center> {this.state.error}</center>}
         <Form onSubmit={this.onSubmit}>
            <FormItem
           {...formItemLayout}
@@ -179,7 +180,13 @@ export default class UserChallengeForm extends React.Component {
           </FormItem>
           <FormItem
           {...formItemLayout}
-          label="Bet How Frequently You Exercise"
+          label="Challenge Description"
+          >
+          <TextArea placeholder="Describe Your Challenge Here" autosize={{ minRows: 2, maxRows: 6 }} />
+          </FormItem>
+          <FormItem
+          {...formItemLayout}
+          label="Exercise How Frequently?"
           >
              <InputNumber
               size="large"
@@ -190,7 +197,7 @@ export default class UserChallengeForm extends React.Component {
 
           <FormItem
           {...formItemLayout}
-          label="Set Your Target's TimeLine"
+          label="Set Your TimeLine"
           >
             <DateRangePicker
                 startDate={this.state.startDate}
