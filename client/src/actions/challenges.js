@@ -5,7 +5,9 @@ export const addChallenge = ( newChallenge) => ({
   currentBets: [], // defaulting this. There shouldn't be any bettings
       // as soon as challenge is set up.
       progress : [],
+
       ...newChallenge,
+      workoutsCompleted:0
       }
 });
 
