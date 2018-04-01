@@ -97,7 +97,6 @@ class MarketListItem extends React.Component{
 			    <Timeline.Item dot={<Icon type="clock-circle-o" style={{ fontSize: '16px' }} />} color="red">Challenge ends on {moment(this.props.endDate).format("MMM DD YYYY")}</Timeline.Item>
 			  </Timeline>
 		  </div>
-<<<<<<< HEAD
 		 <div>
 		  <h4> Workouts done: </h4>
             <Progress
@@ -110,8 +109,6 @@ class MarketListItem extends React.Component{
             />
 		  </div>
 		  </Carousel>
-		  <Input type = "number" placeholder="Insert Your Bet" />
-=======
 		  <Input
             type = "number"
             placeholder="Insert Your Bet"
@@ -119,7 +116,6 @@ class MarketListItem extends React.Component{
             onChange={(e)=>{
                 this.setState({bet:e.target.value})
             }}/>
->>>>>>> 61061cc4252c0a97ae8f81333c497b5fc5d585ee
 
         </Modal>
     </List.Item>
