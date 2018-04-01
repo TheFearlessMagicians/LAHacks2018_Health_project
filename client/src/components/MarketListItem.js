@@ -49,11 +49,10 @@ class MarketItemList extends React.Component{
     	>
       <List.Item.Meta
         avatar={<Icon type="line-chart" />}
-        title={<a href="https://ant.design">{this.props.goal}</a>}
+        title={<p onClick={this.showModal}>{this.props.goal}</p>}
         description= {<p> User Bets: {this.props.userBet} </p>}
      />
      <Modal
-          title="Basic Modal"
           visible={this.state.visible}
           okText = "Make a bet"
           title = "Challenge Details"
