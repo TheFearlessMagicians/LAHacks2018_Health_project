@@ -87,6 +87,7 @@ export default class UserChallengeForm extends React.Component {
 
   onSubmit = e => {
     e.preventDefault(); // we don't want browser to do full page refresh.
+    console.log(this.state);
     if (
       typeof this.state.userBet === "undefined" ||
       this.state.description === "" ||
@@ -183,7 +184,8 @@ export default class UserChallengeForm extends React.Component {
           {...formItemLayout}
           label="Challenge Description"
           >
-          <TextArea placeholder="Describe Your Challenge Here" autosize={{ minRows: 2, maxRows: 6 }} />
+          <TextArea placeholder="Describe Your Challenge Here" autosize={{ minRows: 2, maxRows: 6 }}
+          onChange= {this.onDescriptionChange} />
           </FormItem>
           <FormItem
           {...formItemLayout}
