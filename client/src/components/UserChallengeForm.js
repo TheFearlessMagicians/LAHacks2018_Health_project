@@ -187,6 +187,24 @@ export default class UserChallengeForm extends React.Component {
           <TextArea placeholder="Describe Your Challenge Here" autosize={{ minRows: 2, maxRows: 6 }}
           onChange= {this.onDescriptionChange} />
           </FormItem>
+
+          <FormItem
+          {...formItemLayout}
+          label="Calories Goal"
+          >
+            <InputNumber
+                size="large"
+                formatter={value =>
+                  `${value} calories`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
+                placeholder="Place your bet here"
+                value={this.state.}
+                onChange={this.}
+            />
+          </FormItem>
+
+
+
           <FormItem
           {...formItemLayout}
           label="Exercise How Frequently?"
