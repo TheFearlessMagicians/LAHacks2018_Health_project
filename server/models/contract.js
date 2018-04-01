@@ -8,6 +8,7 @@ let ContractSchema = new mongoose.Schema({
 	address: String,
 	description: String,
 	goal: String,
+	endDate: Number,
 	active: {
 		type: Boolean,
 		default: true
