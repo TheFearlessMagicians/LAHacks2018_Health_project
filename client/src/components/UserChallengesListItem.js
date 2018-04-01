@@ -10,11 +10,17 @@ const UserChallengesListItem2 = (props) => (
         <p> endDate: :{moment(props.endDate).format('MM DD YYYY')}</p>,
         <div>
             <h4> Workouts done: </h4>
-            <Progress percent={Math.round((props.workoutsCompleted / (moment(props.startDate- props.endDate).format('DDD') / 7 ) * props.frequency) * 100)} />
+            <Progress
+                percent={Math.round((props.workoutsCompleted / (moment(props.startDate- props.endDate).format('DDD') / 7 ) * props.frequency) * 100)}
+                status="active"
+            />
         </div>,
         <div>
             <h4> Time till deadline: </h4>
-            <Progress percent={moment() < moment(props.startDate)? 0: Math.round(100 * (moment() - moment(props.startDate) )/ (moment(props.endDate) - moment(props.startDate)))} />
+            <Progress
+                percent={moment() < moment(props.startDate)? 0: Math.round(100 * (moment() - moment(props.startDate) )/ (moment(props.endDate) - moment(props.startDate)))}
+                status="active"
+            />
         </div>
     ]}
     >
