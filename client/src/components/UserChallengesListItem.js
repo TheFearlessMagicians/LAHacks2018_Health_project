@@ -7,7 +7,15 @@ const UserChallengesListItem2 = (props) => (
     actions= {[
         <p> Bet: {props.userBet}</p>,
         <p> startDate:{moment(props.startDate).format('MM DD YYYY')}</p>,
-        <p> endDate: :{moment(props.endDate).format('MM DD YYYY')}</p>
+        <p> endDate: :{moment(props.endDate).format('MM DD YYYY')}</p>,
+        <div>
+            <h4> Workouts done: </h4>
+            <Progress percent={Math.round((props.workoutsCompleted / (moment(props.startDate- props.endDate).format('DDD') / 7 ) * props.frequency) * 100)} />
+        </div>,
+        <div>
+            <h4> Time till deadline: </h4>
+            <Progress percent={moment() < moment(props.startDate)? 0: Math.round(100 * (moment() - moment(props.startDate) )/ (moment(props.endDate) - moment(props.startDate)))} />
+        </div>
     ]}
     >
       <List.Item.Meta
@@ -15,10 +23,6 @@ const UserChallengesListItem2 = (props) => (
         title={<a href="https://ant.design">{props.goal}</a>}
         description={props.description}
       />
-      <h4> Workouts done: </h4>
-      <Progress percent={(props.workoutsCompleted / (moment(props.startDate- props.endDate).format('DDD') / 7 ) * props.frequency) * 100} />
-      <h4> Time till deadline: </h4>
-      <Progress percent={100 * (moment() - moment(props.startDate) )/ (moment(props.endDate) - moment(props.startDate))} />
     </List.Item>
 );
 

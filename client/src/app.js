@@ -19,8 +19,8 @@ const store = configureStore();
 //seed data
 store.dispatch(addChallenge(
     {
-        startDate: moment() + 10000,
-        endDate: moment() + 4000000,
+        startDate: moment() - 10000000,
+        endDate: moment() + 40000000,
         description: 'going to jump rope 4 times a week',
         goal: '2000 double unders in 30 mins',
         frequency: 4,
@@ -32,7 +32,7 @@ store.dispatch(addChallenge(
 ));
 store.dispatch(addChallenge(
     {
-        startDate: moment() + 1000000,
+        startDate: moment() - 100000000,
         endDate: moment() + 40000000,
         description :'gonna get Marissa tonight',
         goal: 'getting Marissa',
@@ -45,8 +45,8 @@ store.dispatch(addChallenge(
 ));
 store.dispatch(addChallenge(
     {
-        startDate: moment() + 100000000,
-        endDate: moment() + 40000000000,
+        startDate: moment() - 10000000,
+        endDate: moment() + 4000000000,
         description :'Sketching a drawing 4 time sa week',
         goal: 'Becoming good at drawing',
         frequency: 4,
