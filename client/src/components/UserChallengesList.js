@@ -2,19 +2,27 @@
 // expenses.
 import React from 'react';
 import {connect} from 'react-redux';
+import {finishedWorkout} from '../actions/challenges';
 import UserChallengesListItem from './UserChallengesListItem';
 import {List} from 'antd';
-const ChallengesList = (props) => (
+
+class  ChallengesList extends React.Component {
+    onWorkedOut = (id,calories)=>{
+        this.props.dispatch(finishedWorkout(id, calories));
+    }
+render(){
+    return(
     <List
     itemLayout="horizontal"
-    dataSource={props.currentChallenges}
+    dataSource={this.props.currentChallenges}
     renderItem={challenge => (
-          <UserChallengesListItem key= {challenge.challengeId} {...challenge}/>
+          <UserChallengesListItem key= {challenge.challengeId} {...challenge} onWorkedOut={this.onWorkedOut}/>
     )}
   />
 
-);
+);}
 
+}
 
 const mapStateToProps = (state)=> ({
     currentChallenges: state.challenges // DEBUG//state.player.currentChallenges,

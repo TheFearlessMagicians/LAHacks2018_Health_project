@@ -19,12 +19,13 @@ const store = configureStore();
 //seed data
 store.dispatch(addChallenge(
     {
-        startDate: moment() - 10000000,
-        endDate: moment() + 40000000,
+        startDate: moment() - 1000000000,
+        endDate: moment() + 400000000,
         description: 'going to jump rope 4 times a week',
         goal: '2000 double unders in 30 mins',
         frequency: 4,
         userBet: 200,
+        caloriesPerWorkout: 400,
         // skipping current bets, and progress as it is defaulted.
         userId: uuid(),
         challengeId: uuid()
@@ -33,11 +34,12 @@ store.dispatch(addChallenge(
 store.dispatch(addChallenge(
     {
         startDate: moment() - 100000000,
-        endDate: moment() + 40000000,
+        endDate: moment() + 1000000000,
         description :'gonna get Marissa tonight',
         goal: 'getting Marissa',
         frequency: 1,
         userBet: 10000,
+            caloriesPerWorkout: 300,
         // skipping current bets, and progress,  as it is defaulted.
         userId: uuid(),
         challengeId: uuid()
@@ -46,9 +48,10 @@ store.dispatch(addChallenge(
 store.dispatch(addChallenge(
     {
         startDate: moment() - 10000000,
-        endDate: moment() + 4000000000,
-        description :'Sketching a drawing 4 time sa week',
-        goal: 'Becoming good at drawing',
+        endDate: moment() + 90000000000,
+        description :'Sketching a drawing  with my foot 4 times a week while doing pushups',
+        goal: 'Becoming good at drawing while working out',
+            caloriesPerWorkout: 100,
         frequency: 4,
         userBet: 8000,
         // skipping current bets, and progress,  as it is defaulted.
@@ -68,7 +71,7 @@ axios.get(`${SERVERURL}/contracts`)
     response.data.forEach(async (obj)=> {
         //TODO : what is accounts?
         const contract = await getContract(obj.address);
-        console.log('contract:')
+        console.log('contract:');
         console.log(contract);
         store.dispatch(addChallenge(
             {
