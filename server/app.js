@@ -20,10 +20,9 @@ mongoose.connect("mongodb://localhost/LAHacks");
 
 //Express Router
 app.use(require("./routes/contract"));
-
 app.get("/", (req,res) => {
 	res.json({
-		welcome: "to m'api!"
+		"message": "Welcome to the cleanest API ever"
 	})
 });
 

@@ -124,7 +124,7 @@ describe('Exercise', () => {
             [accounts[1], 0.04]
         ]);
 
-        let workouts = await exercise.methods.getWorkoutCount().call({
+        let workouts = await exercise.methods.workoutCount().call({
             from: accounts[0],
         });
 
