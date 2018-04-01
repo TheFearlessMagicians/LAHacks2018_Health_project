@@ -138,7 +138,7 @@ export default class UserChallengeForm extends React.Component {
     return (
       <div >
         {this.state.error && <p> {this.state.error}</p>}
-        <Form onSubmit={this.onSubmit}>
+        <Form>
            <FormItem
           {...formItemLayout}
           label="Goal"
@@ -200,7 +200,7 @@ export default class UserChallengeForm extends React.Component {
                 focusedInput={this.state.calendarFocused}
                 showClearDates={true}
                 numberOfMonths={1}
-                isOutsideRange={() => false}
+                isOutsideRange={(day) => moment(day) < moment()}
                 startDateId={"start"}
                 endDateId={"end"}
             />
@@ -219,7 +219,7 @@ export default class UserChallengeForm extends React.Component {
             </div>
         </FormItem>
         <FormItem {...tailFormItemLayout}>
-          <Button size= "large" type="primary" htmlType="submit">Register</Button>
+          <Button size= "large" type="primary" htmlType="submit" onClick={this.onSubmit}>Register</Button>
         </FormItem>
         </Form>
       </div>

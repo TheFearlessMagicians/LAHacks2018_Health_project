@@ -3,8 +3,10 @@ const Web3 = require('web3');
 const { interface, bytecode } = require('./compile');
 
 const provider = new HDWalletProvider(
-    'defense tiny cotton way bamboo tumble also tube disorder surge ask visual',
-    "https://rinkeby.infura.io/5EV30OwgXAK4IhOe667x"
+    'detect aspect culture end focus jeans cinnamon kite yellow balcony toast easy',
+    "https://rinkeby.infura.io/5EV30OwgXAK4IhOe667x",
+    2,
+    2
 );
 
 
@@ -22,19 +24,30 @@ const seedData = [{
     {
         frequency: 6,
         calorieTargetPerWorkout: 900,
-        endTimeFromStart: 340000000,
+        endTimeFromStart: 34000000,
         intialBetByPlayer: web3.utils.toWei('0.3', 'ether'),
         betAgainst: web3.utils.toWei('0.4', 'ether'),
         goal: "my wife and i want to kickstart our fitness jouney",
         description: "We trying to workout 5 times a week and burn 900kcal per workout."
     }
 ]
-var i = 0;
-seedData.forEach((data) => {
-    const deploy = async() => {
-        const accounts = await web3.eth.getAccounts();
-        console.log('Attempting to deploy from account', accounts[0])
-        let exercise = await new web3.eth.Contract(JSON.parse(interface)).deploy({ data: bytecode, arguments: [data.frequency, data.calorieTargetPerWorkout, data.endTimeFromStart] }).send({ from: accounts[0], gas: '6000000' });
+
+
+
+
+
+
+
+seedData.forEach( async (data, i) => {
+    const accounts =  await web3.eth.getAccounts((err,res)=>{
+        if (err)
+            console.log(err);
+        console.log('response');
+        console.log(res);
+    });
+        console.log(accounts);
+        console.log('Attempting to deploy from account', accounts[i])
+        let exercise = await new web3.eth.Contract(JSON.parse(interface)).deploy({ data: bytecode, arguments: [data.frequency, data.calorieTargetPerWorkout, data.endTimeFromStart] }).send({ from: accounts[i], gas: '6000000' });
         console.log(exercise.options.address);
 
         if (i == 0) {
@@ -44,7 +57,7 @@ seedData.forEach((data) => {
             await exercise.methods.submitBid({
                 from: accounts[1]
             });
-            i++;
+
         } else {
             await exercise.methods.deposit().send({
                 from: accounts[1]
@@ -53,8 +66,4 @@ seedData.forEach((data) => {
                 from: accounts[0]
             });
         };
-    }
 })
-
-
-deploy();
