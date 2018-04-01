@@ -71,7 +71,6 @@ class LandingPage extends React.Component {
                 <TypeWriter
                      typing={this.state.showNaySayer ==1? -1 :1}
                      fixed={true}
-                     initDelay={500}
                      >
                     <blockquote>
                         I want to lose 5 kg of fat by running in 5 months.
@@ -80,7 +79,6 @@ class LandingPage extends React.Component {
                      <TypeWriter
                           typing={this.state.showNaySayer ==1? -1 :1}
                           fixed={true}
-                          initDelay={1000}
                          >
                              <blockquote styles = {{'max-width': '40%' }}>
                     If I'm not ready for the Boston half-marathon in 6 months time I'm gonna pay $1000 for it. Fuck it.
@@ -89,7 +87,6 @@ class LandingPage extends React.Component {
                      <TypeWriter
                           typing={this.state.showNaySayer ==1? -1 :1}
                           fixed={true}
-                          initDelay={2000}
                          >
                              <blockquote>
                         I want to run around Venice Beach 3 times a week.
