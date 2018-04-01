@@ -29,7 +29,8 @@ const AppRouter =()=> (
         <Route path="/createChallenge" component={AddChallengePage}/> {/* We have to change
 
         // . Otherwise, when we get /settings, this will be an actual GET request
-        // to the server, even though we want client-side routing.*/}
+        // to the server, even though we want client-side routing.*/
+
         <Route component={NotFoundPage} /> {/* final route is a 404. */}
       </Switch>
     </div>
