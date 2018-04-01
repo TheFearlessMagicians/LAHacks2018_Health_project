@@ -74,15 +74,12 @@ axios.get(`${SERVERURL}/contracts`)
                     console.log('contract:');
                     console.log(contract);
                     store.dispatch(addChallenge({
-                            startDate: await contract.methods.start().call({
-                                from: account
-                            }),
+                            startDate: await contract.methods.start().call(),
                             endDate: obj.endDate,
-                            frequency: await contract.methods.frequency().call({
-                                from: account
-                            }),
+                            frequency: await contract.methods.frequency().call(),
                             description: obj.description,
                             goal: obj.goal,
+<<<<<<< HEAD
                             userBet: await web3.eth.getBalance(contract.address) - await contract.methods.totalBetAgainst().call({
                                 from: account
                             }),
@@ -96,6 +93,13 @@ axios.get(`${SERVERURL}/contracts`)
                                 from: account
                             }),
                             challengeId: contract.options.address
+=======
+                            userBet: Number (web3.utils.fromWei(await web3.eth.getBalance(obj.address),'ether')) - Number((web3.utils.fromWei(await contract.methods.totalBetAgainst().call(),'ether'))),
+                            betAgainst: Number(web3.utils.fromWei(await contract.methods.totalBetAgainst().call(), 'ether')),
+                            workoutsCompleted: Number(await contract.methods.workoutCount().call()),
+                            userId: await contract.methods.owner().call(),
+                            challengeId: obj.address
+>>>>>>> 827b086747d6223b4e468db9c429dcc51f80e94a
                         })
                     );
             })
