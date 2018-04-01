@@ -11,6 +11,12 @@ export const addChallenge = ( newChallenge) => ({
       }
 });
 
+export const completedChallenge = (id, exceedCaloriesGoalBy) => ({
+  type: 'CHALLENGE_COMPLETE',
+  id,
+  exceedCaloriesGoalBy
+})
+
 
 export const finishedWorkout = (id,caloriesPerWorkout) => ({
     type:'FINISHED_WORKOUT',

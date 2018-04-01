@@ -30,11 +30,12 @@
                         workoutsCompleted: [200,400,300,500], // make progress bar for this, comparing total amount of workouts
                         // in challenge vs workouts completed.
                         userId: '1da20cblablabla',
+                        exceedCalorieGoalBy: 0,
 
 
 
                         // NOT NEEDED IN POST TO MONGO
-                            userBet: 400, // how much user is betting against himself.
+                        userBet: 400, // how much user is betting against himself.
                         challengeId:'1209adjsblablabla'
                 }
         ],

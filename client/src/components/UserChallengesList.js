@@ -2,7 +2,7 @@
 // expenses.
 import React from 'react';
 import {connect} from 'react-redux';
-import {finishedWorkout} from '../actions/challenges';
+import {finishedWorkout, completedChallenge} from '../actions/challenges';
 import UserChallengesListItem from './UserChallengesListItem';
 import {List} from 'antd';
 
@@ -10,13 +10,17 @@ class  ChallengesList extends React.Component {
     onWorkedOut = (id,calories)=>{
         this.props.dispatch(finishedWorkout(id, calories));
     }
+    onCompletion = (id, exceedCalorieGoalBy)=>{
+    	this.props.dispatch(completedChallenge(id, exceedCalorieGoalBy));
+    }
+
 render(){
     return(
     <List
     itemLayout="horizontal"
     dataSource={this.props.currentChallenges}
     renderItem={challenge => (
-          <UserChallengesListItem key= {challenge.challengeId} {...challenge} onWorkedOut={this.onWorkedOut}/>
+          <UserChallengesListItem key= {challenge.challengeId} {...challenge} onWorkedOut={this.onWorkedOut} onCompletion={this.onCompletion}/>
     )}
   />
 
