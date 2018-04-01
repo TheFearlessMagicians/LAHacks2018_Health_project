@@ -22,7 +22,7 @@ class LandingPage extends React.Component {
         <Input placeholder="What's your name?" onChange={(e)=>{
             this.setState({name: e.target.value});
         }} />
-    		<Icon type="line-chart" />
+    		<Icon type="line-chart" style={{ fontSize: 16, color: white }} />
     		<Button onClick= {(e) => {
                 if (this.state.name=== '')
                     alert('put your name please!');
@@ -32,7 +32,7 @@ class LandingPage extends React.Component {
                 }
     		}}>Better</Button>
 
-    		<Icon type="user-add" />
+    		<Icon type="user-add" style={{ fontSize: 16, color: white }} />
     		<Button onClick= {(e) => {
                 if (this.state.name=== '')
                     alert('put your name please!');

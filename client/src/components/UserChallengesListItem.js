@@ -36,8 +36,12 @@ class UserChallengesListItem2 extends React.Component{
             const exceedCalorieGoalBy = totalWorkout - totalExpectedWorkout;
             this.props.onCompletion(this.props.challengeId, exceedCalorieGoalBy);
 
-            if(exceedCalorieGoalBy >= 0)
-              this.openNotificationWithIcon('success','CONGRATULATIONS', `Challenge Complete! You have exceed your calories goal by ${exceedCalorieGoalBy} calories. We have deposited ${this.props.userBet} with a bonus of`); 
+            if(exceedCalorieGoalBy >= 0){
+              const totalBets = this.props.bets.reduce(reducer);
+              const userBonus = totalBets * (1 / (1 + Math.exp(x)) - 1);
+              const totalgains = this.props.userBet + userBonus;
+              this.openNotificationWithIcon('success','CONGRATULATIONS', `Challenge Complete! You have exceed your calories goal by ${exceedCalorieGoalBy} calories. We have deposited ${this.props.userBet} with a bonus of ${userBonus} for a total of ${totalgains}`); 
+            }
             else
               this.openNotificationWithIcon('warning','Unfortunately...',`You lost the bet and will lose ${this.props.userBet}. You failed to meet your calories goal by ${Math.abs(exceedCalorieGoalBy)}.`);
           //  return;
