@@ -21,7 +21,7 @@ router.get("/contracts", (req, res) => {
 
 router.get("/contract/:address", (req, res) => {
     if (req.params.address != null) {
-        Contract.findById(req.params.address, (error, contract) => {
+        Contract.findById(req.params.address).lean().exec((error, contract) => {
             if (error || contract == null) {
                 res.send({
                     "message": "Error Contract not found."
@@ -39,10 +39,12 @@ router.get("/contract/:address", (req, res) => {
 
 router.post("/contract", (req, res) => {
     let address = req.body.address;
+    let description = req.body.desscription;
+    let goal = req.body.goal;
     if (address) {
         Contract.find({
             address: address
-        }, (error, foundContracts) => {
+        }).lean().exec((error, foundContracts) => {
             if (error) {
                 res.json({
                     "message": "Error contract creation failed."
@@ -50,7 +52,9 @@ router.post("/contract", (req, res) => {
             } else {
                 if (foundContracts.length == 0) {
                     Contract.create({
-                        address: address
+                        address: address,
+                        description: description,
+                        goal: goal
                     }, err => {
                         if (err) {
                             res.json({
@@ -71,7 +75,7 @@ router.post("/contract", (req, res) => {
 });
 
 router.put("/contract/:address", (req, res) => {
-    Contract.findOne({ address: req.params.address }, (error, contract) => {
+    Contract.findOne({ address: req.params.address }).lean().exec((error, contract) => {
         if (error) {
             console.log(error);
             res.json({
@@ -90,7 +94,7 @@ router.put("/contract/:address", (req, res) => {
                     } else {
                         res.json({ "message": "Contract updated succesfully." });
                     }
-                })
+                });
             }
         }
     });

@@ -9,11 +9,11 @@ contract Exercise {
     uint[] public workouts;
     address public owner; //the person who deploys the contract
     uint public day = 0;
-    bool deposited = false;
-    uint workoutCount = 0;
-    uint totalBetAgainst = 0;
-    bool active = false;
-    
+    bool public deposited = false;
+    uint public workoutCount = 0;
+    uint public totalBetAgainst = 0;
+    bool public active = false;
+
     //keeping track of all bets
     struct bet {
         address betterAddress;
@@ -95,15 +95,9 @@ contract Exercise {
             dest.transfer(money);
         }
     }
+    
     function getBalance () public constant returns(uint){
         return address(this).balance;
     }
-    
-    function getWorkoutCount() public constant returns (uint){
-        return workoutCount;
-    }
-    
-    function getActive() public constant returns (bool){
-        return active;
-    }
+
 }
