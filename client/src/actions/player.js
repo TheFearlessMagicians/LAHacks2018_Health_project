@@ -9,3 +9,6 @@ export const addBetter= (newPlayer)=> ({
   type: 'ADD_BETTER',
   newPlayer
 })
+export const removePlayer = ()=> ({
+    type:'DELETE_PLAYER'
+})

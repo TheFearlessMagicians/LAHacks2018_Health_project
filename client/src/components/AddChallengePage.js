@@ -5,17 +5,18 @@ import {addChallenge} from '../actions/challenges';
 const AddChallengePage = (props) => {
     console.log('add challenge page player prop')
     console.log(props.player);
-    /*if(typeof props.player === 'undefined' || props.player.type !== 'user')
+    if(typeof props.player === 'undefined' || props.player.type !== 'user')
         return (
             <div>
                 Access denied
             </div>
         );
-*/
+
     return (
   <div>
 
     <h1>Add a new Challenge</h1>
+    <p> Click on one of your earlier challenges to edit. Note that you can't change the dates or cancel a challenge once already posted! </p>
     <UserChallengeForm
       onSubmit={(challenge) => {
         console.log('got challenge: ');
