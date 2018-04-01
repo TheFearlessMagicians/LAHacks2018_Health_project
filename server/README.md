@@ -1,6 +1,6 @@
-#Before everything
-##Install Metamask on Chrome and google rinkeby-faucet and give yourself max tokens
-##There are some imports so you have to require a lot of these things
+# Before everything
+## Install Metamask on Chrome and google rinkeby-faucet and give yourself max tokens
+## There are some imports so you have to require a lot of these things
 
 
 # Deploying A contract
@@ -25,7 +25,7 @@ await exercise.methods.logWorkOut(<calories>).call({
 });
 ```
 
-#Workouts and frequency
+# Workouts and frequency
 ```js
 let workouts = await exercise.methods.getWorkoutCount().call({
     from: accounts[0],
@@ -36,7 +36,7 @@ let frequency = await exercise.methods.frequency().call({
 });
 ```
 
-#Submit a bet
+# Submit a bet
 ```
 await exercise.methods.submitBet().send({
     from: accounts[1],
@@ -45,21 +45,21 @@ await exercise.methods.submitBet().send({
 });
 ```
 
-#Number of bets
+# Number of bets
 ```js
 let numBets = await exercise.methods.getNumBets().call({
     from: accounts[0],
 });
 ```
 
-#Money on contract
+# Money on contract
 ```js
 balance = await exercise.methods.getBalance().call({
     from: accounts[0],
 });
 ```
 
-#Processing Returns
+# Processing Returns
 ```js
 const processReturn = (AccountsToEth) => {
     let sum = 0;

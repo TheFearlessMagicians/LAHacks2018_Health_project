@@ -2,7 +2,7 @@ import React from 'react';
 import ConnectedMarketList from './MarketList'
 
 const MarketDashboard = () => (
-	<div>
+	<div className = "widget">
 		<ConnectedMarketList />
 	</div>
 )

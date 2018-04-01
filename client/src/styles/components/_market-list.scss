@@ -1,0 +1,41 @@
+// Widget
+.widget {
+  background: white;
+  margin-bottom: $xl-size;
+}
+
+.widget__message {
+  border-bottom: 1px solid black;
+  color: white;
+  margin: 0;
+  padding: $l-size;
+  text-align: center;
+}
+
+// Widget Header
+.widget-header {
+  background: blue;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  padding: $m-size;
+}
+
+.widget-header__title {
+  margin: 0;
+}
+
+.market-item {
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: $l-size $m-size;
+}
+
+.market-item__text {
+  color: black;
+  font-weight: 500;
+  font-size: 2rem;
+  margin: 0;
+  word-break: break-all;
+}

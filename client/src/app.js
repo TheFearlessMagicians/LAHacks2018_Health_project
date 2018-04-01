@@ -9,6 +9,12 @@ import {addChallenge} from './actions/challenges';
 import {Provider} from 'react-redux';
 import moment from 'moment';
 import uuid from 'uuid';
+import web3 from './blockchain/web3';
+import getAccounts from './blockchain/accounts';
+import getContract from './blockchain/contract';
+
+import axios from 'axios';
+const SERVERURL = "http://localhost:8000";
 const store = configureStore();
 //seed data
 store.dispatch(addChallenge(
@@ -50,13 +56,50 @@ store.dispatch(addChallenge(
         challengeId: uuid()
     }
 ));
-/* We are providing a way for all our components to
-interact with redux. Create our store first, and pass it down as store. */
+
+// Getting data from blockchain:
+console.log('getting accounts......');
+const account  = getAccounts(web3)[0];
+console.log('got accounts. Getting addresses from mongo db...');
+axios.get(`${SERVERURL}/contracts`)
+  .then(function (response) {
+      console.log('response:');
+      console.log(response);
+    response.data.forEach(async (obj)=> {
+        //TODO : what is accounts?
+        const contract = await getContract(obj.address);
+        console.log('contract:')
+        console.log(contract);
+        store.dispatch(addChallenge(
+            {
+                startDate: await contract.methods.start().call({
+                    from: account
+                }),
+                endDate: await contract.methods.end().call({
+                    from: account
+                }),
+                frequency:  await contract.methods.frequency().call({
+                    from: account
+                }),
+                description: 'BLANK',
+                goal: 'BLANK',
+                userBet: 10000,
+                userId: 'BLANK',
+                challengeId: 'BLANK'
+        }
+    )
+  )
+})})
+  .catch(function (error) {
+      console.log('AXIOS ERROR');
+    console.log(error);
+  });
+
 const app = (
 <Provider store = {store}>
   <AppRouter/>
 </Provider>
-)
+);
 
 
 
