@@ -44,14 +44,14 @@ render(){
             <h4> Workouts done: </h4>
 
             <Progress
-                percent={Math.round((props.workoutsCompleted / (moment(props.startDate- props.endDate).format('DDD') / 7 ) * props.frequency) * 100)}
+                percent={Math.round((this.props.workoutsCompleted / (moment(this.props.startDate- this.props.endDate).format('DDD') / 7 ) * this.props.frequency) * 100)}
                 status="active"
             />
         </div>,
         <div>
             <h4> Time till deadline: </h4>
             <Progress
-                percent={moment() < moment(props.startDate)? 0: Math.round(100 * (moment() - moment(props.startDate) )/ (moment(props.endDate) - moment(props.startDate)))}
+                percent={moment() < moment(this.props.startDate)? 0: Math.round(100 * (moment() - moment(this.props.startDate) )/ (moment(this.props.endDate) - moment(this.props.startDate)))}
                 status="active"
             />
 

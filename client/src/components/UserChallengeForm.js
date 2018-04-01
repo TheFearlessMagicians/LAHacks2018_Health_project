@@ -189,21 +189,21 @@ export default class UserChallengeForm extends React.Component {
           </FormItem>
 
           <FormItem
-          {...formItemLayout}
-          label="Calories Goal"
-          >
-            <InputNumber
-                size="large"
-                formatter={value =>
-                  `${value} calories`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                }
-                placeholder="Place your bet here"
-                value={this.state.}
-                onChange={this.}
-            />
-          </FormItem>
+          // {...formItemLayout}
+          // label="Calories Goal"
+          // >
+          //   <InputNumber
+          //       size="large"
+          //       formatter={value =>
+          //         `${value} calories`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          //       }
+          //       placeholder="Place your bet here"
+          //       value={this.state.}
+          //       onChange={this.}
+          //   />
+          // </FormItem>
 
-
+          />
 
           <FormItem
           {...formItemLayout}
