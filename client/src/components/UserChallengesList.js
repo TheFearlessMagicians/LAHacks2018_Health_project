@@ -17,7 +17,7 @@ const ChallengesList = (props) => (
 
 
 const mapStateToProps = (state)=> ({
-    currentChallenges: state.player.currentChallenges,
+    currentChallenges: state.challenges // DEBUG//state.player.currentChallenges,
 });
 // The object's key value pairs are then passed as props to the second
 // argument, which is in here, ExpenseList.
