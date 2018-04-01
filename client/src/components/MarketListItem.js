@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button, Timeline, Icon, Input, notification } from 'antd';
+import {List,Avatar} from 'antd';
 import moment from 'moment';
 import 'antd/dist/antd.css';
 
@@ -40,10 +41,18 @@ class MarketItemList extends React.Component{
 
   render() {
     return (
-      <div className = "market-item">
-      	<p className = "market-item__text">{this.props.description}</p>
+	<List.Item
+    	actions= {[
+        <p> End Date: :{moment(this.props.endDate).format('MM DD YYYY')}</p>,
         <Button type="primary" onClick={this.showModal}>Click for More Info</Button>
-        <Modal
+    	]}
+    	>
+      <List.Item.Meta
+        avatar={<Icon type="line-chart" />}
+        title={<a href="https://ant.design">{this.props.goal}</a>}
+        description= {<p> User Bets: {this.props.userBet} </p>}
+     />
+     <Modal
           title="Basic Modal"
           visible={this.state.visible}
           okText = "Make a bet"
@@ -63,11 +72,12 @@ class MarketItemList extends React.Component{
 		  <Input type = "number" placeholder="Insert Your Bet" />
 
         </Modal>
-
-
-      </div>
+    </List.Item>
     );
   }
 }
 
 export default MarketItemList;
+
+// <div className = "market-item">
+//       	<p className = "market-item__text">{this.props.description}</p>

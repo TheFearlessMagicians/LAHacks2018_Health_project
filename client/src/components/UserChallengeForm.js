@@ -138,13 +138,9 @@ export default class UserChallengeForm extends React.Component {
 
     return (
       <div >
-<<<<<<< HEAD
-        {this.state.error && <center> {this.state.error}</center>}
-        <Form onSubmit={this.onSubmit}>
-=======
         {this.state.error && <p> {this.state.error}</p>}
         <Form>
->>>>>>> 617aedf8d35a9aaacc5932eddb15fcb5108ea2b5
+
            <FormItem
           {...formItemLayout}
           label="Goal"
