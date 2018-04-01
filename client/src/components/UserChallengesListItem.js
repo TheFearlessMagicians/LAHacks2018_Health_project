@@ -69,13 +69,17 @@ render(){
             <h4> Workouts done: </h4>
 
             <Progress
+
              percent={Math.ceil((this.props.workoutsCompleted.length / this.getTotalExpectedworkouts()) * 100)}
                   status={this.props.workoutsCompleted.length == this.getTotalExpectedworkouts()? "success":"active"}/>
+
         </div>,
         <div>
             <h4> Time till deadline: </h4>
             <Progress
+
                 percent={moment() < moment(this.props.startDate)? 0:this.getTimePercentage()}
+
                 status="active"
             />
 
@@ -101,7 +105,7 @@ render(){
          <h3>DEADLINE: {moment(this.props.endDate).from(moment())}</h3>
              }
          <h4> Workouts done: </h4>
-         <h4>
+            <h4>
             {this.props.workoutsCompleted.length} / { this.getTotalExpectedworkouts()} workouts
             </h4>
             <Progress
