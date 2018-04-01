@@ -39,7 +39,7 @@ const seedData = [{
 
 const deploy = async() => {
     const accountArray = await web3.eth.getAccounts();
-    const account1Array = await web3.eth.getAccounts();
+    //const account1Array = await web3.eth.getAccounts(); // REDUNDANT
     const account = accountArray[0]; const account1 = accountArray[1];
     console.log('Attempting to deploy from account', account)
     let exercise = await new web3.eth.Contract(JSON.parse(interface)).deploy({ data: bytecode, arguments: [seedData[i].frequency, seedData[i].calorieTargetPerWorkout, seedData[i].endTimeFromStart] }).send({ from: account, gas: '5000000' });
@@ -52,9 +52,9 @@ const deploy = async() => {
         from: account,
         value: web3.utils.toWei('0.02', 'ether'),
         gas: 3000000
-    });  
+    });
     console.log('Set up completed for',i);
-    
+
     axios.post('http://localhost:8000/contract',{
     	address: exercise.options.address,
     	goal: seedData[i].goal,

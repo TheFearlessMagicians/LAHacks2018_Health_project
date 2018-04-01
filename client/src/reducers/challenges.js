@@ -7,6 +7,16 @@ const challengesReducer = (state = defaultChallengesState, action) => {
         return state.concat(action.newChallenge);
     case 'REMOVE_CHALLENGE':
         return state.filter((challenge) => challenge.challengeId !== action.challengeId);
+    case 'FINISHED_WORKOUT':
+    return state.map((challenge) => {
+        if(challenge.challengeId == action.id)
+            return {
+                ...challenge,
+                workoutsCompleted:challenge.workoutsCompleted.concat(action.caloriesPerWorkout)
+            };
+        return challenge
+    });
+
     case 'EDIT_CHALLENGE':
         return state.map(challenge => {
             if(challenge.challengeId === action.challengeId)

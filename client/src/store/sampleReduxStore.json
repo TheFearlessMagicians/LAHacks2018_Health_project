@@ -3,15 +3,38 @@
         challenges: [
                 // This is a single challenge object. we plan to have multiple challenges.
                 {
-                        startDate: 'MOMENTOBJECTHERE',
+                        /* Blockchain values:
+                            frequency
+                            caloriesPerWorkout
+                            endDate
+
+
+                            methods:
+                            logWorkout(calories): log a workout's calories.
+                            getNumBets() : //how many ppl bet against.
+                            getBet(idx): // returns [betAddress, money  in wei.]
+
+                            getWorkouts() : return list of workouts, each item is number of cals burnt
+                            pay(dest, amtOfmoneyInWei): // pay the dest in wei.
+                            getBalance(address)
+
+
+                        */
+                        startDate: 'MOMENTOBJECTHERE', // UNIX TIME
                         endDate: 'MOMENTOBJECTHERE',
                         description: 'description here',
                         goal: 'goalstring here',
+                        caloriesPerWorkout: 400 ,
                         frequency: 4, // how many times per week
-                        userBet: 400, // how much user is betting against himself.
-                        workoutsCompleted: 4, // make progress bar for this, comparing total amount of workouts
+
+                        workoutsCompleted: [200,400,300,500], // make progress bar for this, comparing total amount of workouts
                         // in challenge vs workouts completed.
                         userId: '1da20cblablabla',
+
+
+
+                        // NOT NEEDED IN POST TO MONGO
+                            userBet: 400, // how much user is betting against himself.
                         challengeId:'1209adjsblablabla'
                 }
         ],
@@ -32,9 +55,6 @@
                 id:'bla bla bla',
                 //The below is optional. We can either have it for challenges, or
                 // for bets.
-                currentChallenges: [
-                    //challenge objects
-                ],
                 challengesHistory:[
                         {
                             // challenge objects
@@ -42,7 +62,7 @@
                 ]
                 /*
                 FOR BETS:
-                currentBets: [],
+
                 bettingHistory: []
                 */
         }
