@@ -105,7 +105,7 @@ render(){
          <h3>DEADLINE: {moment(this.props.endDate).from(moment())}</h3>
              }
          <h4> Workouts done: </h4>
-         <h4>
+            <h4>
             {this.props.workoutsCompleted.length} / { this.getTotalExpectedworkouts()} workouts
             </h4>
             <Progress

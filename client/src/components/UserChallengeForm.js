@@ -115,7 +115,8 @@ export default class UserChallengeForm extends React.Component {
         endDate: this.state.endDate.valueOf(), // parse moment object to get timestamp -
         //unix time in millis
         goal: this.state.goal,
-        caloriesPerWorkout:this.state.caloriesPerWorkout
+        caloriesPerWorkout:this.state.caloriesPerWorkout,
+        frequency: this.state.frequency
       });
     }
   };
@@ -196,7 +197,6 @@ export default class UserChallengeForm extends React.Component {
           </FormItem>
 
           <FormItem
-
           {...formItemLayout}
           label="Calories Goal"
           >
@@ -210,8 +210,6 @@ export default class UserChallengeForm extends React.Component {
                 onChange={this.onCaloriesChange}
             />
           </FormItem>
-
-          />
 
           <FormItem
           {...formItemLayout}
