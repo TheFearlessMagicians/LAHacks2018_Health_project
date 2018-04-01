@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, Timeline, Icon, Input, notification } from 'antd';
+import { Modal, Button, Timeline, Icon, Input, notification,Carousel, Progress } from 'antd';
 import {List,Avatar} from 'antd';
 import moment from 'moment';
 import 'antd/dist/antd.css';
@@ -43,8 +43,12 @@ class MarketListItem extends React.Component{
     });
   }
 
-
-
+  getTotalExpectedworkouts = () => {
+      return Math.ceil((moment( this.props.endDate).diff(moment( this.props.startDate),'days') / 7 ) * this.props.frequency)
+  }
+  getTimePercentage = () => {
+      return Math.ceil(100 * (moment().diff (moment(this.props.startDate),'days') / moment(this.props.endDate).diff(moment(this.props.startDate),'days')))
+  }
   render() {
     return (
 	<List.Item
@@ -86,12 +90,28 @@ class MarketListItem extends React.Component{
           } </p>
           <p>number of bets: {this.props.bets.length}</p>
           <h3>{moment(this.props.endDate).from(moment(this.props.startDate))}</h3>
+          <Carousel autoplay>
           <div>
 	          <Timeline>
 			    <Timeline.Item>User started the challenge on {moment(this.props.startDate).format("MMM DD YYYY")}</Timeline.Item>
 			    <Timeline.Item dot={<Icon type="clock-circle-o" style={{ fontSize: '16px' }} />} color="red">Challenge ends on {moment(this.props.endDate).format("MMM DD YYYY")}</Timeline.Item>
 			  </Timeline>
 		  </div>
+<<<<<<< HEAD
+		 <div>
+		  <h4> Workouts done: </h4>
+            <Progress
+             percent={Math.ceil((this.props.workoutsCompleted.length / this.getTotalExpectedworkouts()) * 100)}
+             status={this.props.workoutsCompleted.length == this.getTotalExpectedworkouts()? "success":"active"}/>
+           <h4> Time till deadline: </h4>
+            <Progress
+                percent={moment() < moment(this.props.startDate)? 0:this.getTimePercentage()}
+                status="active"
+            />
+		  </div>
+		  </Carousel>
+		  <Input type = "number" placeholder="Insert Your Bet" />
+=======
 		  <Input
             type = "number"
             placeholder="Insert Your Bet"
@@ -99,6 +119,7 @@ class MarketListItem extends React.Component{
             onChange={(e)=>{
                 this.setState({bet:e.target.value})
             }}/>
+>>>>>>> 61061cc4252c0a97ae8f81333c497b5fc5d585ee
 
         </Modal>
     </List.Item>
