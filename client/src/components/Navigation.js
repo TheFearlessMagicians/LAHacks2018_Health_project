@@ -2,14 +2,17 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Layout, Menu} from 'antd';
-
+const style = {
+    lineHeight:'64px',
+    //background:' #87e8de',
+}
 const NavigationLinks = (props) => {
     if( typeof props.player === 'undefined' || props.player.type == '')
         return (
         <Menu
             theme="dark"
             mode="horizontal"
-              style={{ lineHeight: '64px' }}
+              style={style}
 
               >
             <Menu.Item key ="1">
@@ -22,7 +25,7 @@ const NavigationLinks = (props) => {
         <Menu
             theme="dark"
             mode="horizontal"
-              style={{ lineHeight: '64px' }}
+              style={style}
               >
                 <Menu.Item key ="2">
             <NavLink to="/userDashboard" activeClassName="is-active" exact = {true}> My Challenges </NavLink>
@@ -40,7 +43,7 @@ const NavigationLinks = (props) => {
             <Menu
                 theme="dark"
                 mode="horizontal"
-                  style={{ lineHeight: '64px' }}
+                  style={style}
 
                   >
             <Menu.Item key ="2">
@@ -58,7 +61,7 @@ const NavigationLinks = (props) => {
 const Navigation = (props)=> {
     return (
         <Layout>
-        <NavigationLinks player={props.player}/>
+        <NavigationLinks player={props.player} />
         </Layout>
     );
 }

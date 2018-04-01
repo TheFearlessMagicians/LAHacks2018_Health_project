@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AppRouter from './routes/AppRouter';
 import './styles/styles.scss'; // import styles.css to our whole app
 import 'normalize.css/normalize.css'; // every import not starting with
+//import Background from './photos/sustaining-motivation.jpg';
 // redux tings:
 import configureStore from './store/configureStore';
 import {addChallenge} from './actions/challenges';
@@ -118,8 +119,8 @@ a();
   });
 
 const app = (
-<Provider store = {store}>
-  <AppRouter/>
+<Provider store = {store} >
+  <AppRouter style={{backgroundImage: `url(sustaining-motivation.jpg)`}}/>
 </Provider>
 );
 
