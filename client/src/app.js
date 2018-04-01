@@ -57,10 +57,11 @@ store.dispatch(addChallenge({
 
 // Getting data from blockchain:
 console.log('getting accounts......');
-const accounts = getAccounts(web3);
 console.log('got accounts. Getting addresses from mongo db...');
 axios.get(`${SERVERURL}/contracts`)
-    .then(function(response) {
+    .then( async (response) => {
+            const accounts = await web3.eth.getAccounts();
+            const account = accounts[0];
             console.log('response:');
             console.log(response);
             response.data.forEach(async(obj) => {

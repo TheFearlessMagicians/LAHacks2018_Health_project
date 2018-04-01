@@ -6,10 +6,4 @@ const abi = [{"constant":true,"inputs":[],"name":"active","outputs":[{"name":"",
 return new web3.eth.Contract(abi,address);
 }
 
-
-const createContract = async ( ) =>{
-	const accounts = await web3.eth.getAccount();
-	const acc = accounts[0];
-}
-
 export default getContract;
