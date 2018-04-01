@@ -52,14 +52,16 @@ export default class UserChallengeForm extends React.Component {
 
   onGoalChange = e => {
     const goal = e.target.value;
-    this.setState({ goal });
-  };
-  onFrequencyChange = e => {
-    const frequency = e.target.value;
-    this.setState({ frequency });
-  };
-  onuserBetChange = val => {
-    const userBet = val; // e.target.value;
+
+    this.setState({goal});
+  }
+  onFrequencyChange = (val) =>{
+    const frequency = val;
+    this.setState({frequency});
+  }
+  onuserBetChange = (val) => {
+    const userBet =val;// e.target.value;
+
 
     this.setState({ userBet });
     //else
@@ -109,6 +111,7 @@ export default class UserChallengeForm extends React.Component {
     }
   };
   render() {
+
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -131,6 +134,7 @@ export default class UserChallengeForm extends React.Component {
         }
       }
     };
+
     return (
       <div>
         {this.state.error && <p> {this.state.error}</p>}

@@ -1,8 +1,8 @@
 Arguments: 
-  /Users/willyspinner/.nvm/versions/node/v6.11.5/bin/node /usr/local/bin/yarn run dev-server
+  /Users/willyspinner/.nvm/versions/node/v6.11.5/bin/node /usr/local/bin/yarn add web3
 
 PATH: 
-  /Users/willyspinner/.nvm/versions/node/v6.11.5/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/go/bin:/opt/X11/bin:/Users/willyspinner/.yadr/bin:/Users/willyspinner/.yadr/bin/yadr:/opt/local/bin:/Users/willyspinner/willysBin:/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages
+  /Users/willyspinner/.nvm/versions/node/v6.11.5/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/go/bin:/opt/X11/bin:/Users/willyspinner/.yadr/bin:/Users/willyspinner/.yadr/bin/yadr:/opt/local/bin:/Users/willyspinner/willysBin:/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages:/opt/local/bin:/Users/willyspinner/willysBin:/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages
 
 Yarn version: 
   1.5.1
@@ -8068,12 +8068,14 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
-  Command: sh
-  Arguments: -c webpack-dev-server --mode development
-  Directory: /Users/willyspinner/Desktop/fearless_magicians/LaHacks2018_FMG/client
+  Exit code: 128
+  Command: git
+  Arguments: ls-remote --tags --heads git://github.com/frozeman/WebSocket-Node.git
+  Directory: /Users/willyspinner/Desktop/fearless_magicians/LAHacks2018_Health_project/client
   Output:
-  
+  fatal: unable to connect to github.com:
+  github.com[0: 192.30.255.112]: errno=Operation timed out
+  github.com[1: 192.30.255.113]: errno=Operation timed out
       at ProcessTermError.Error (native)
       at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
       at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
@@ -8081,4 +8083,6 @@ Trace:
       at emitTwo (events.js:106:13)
       at ChildProcess.emit (events.js:191:7)
       at maybeClose (internal/child_process.js:920:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
+      at Socket.<anonymous> (internal/child_process.js:351:11)
+      at emitOne (events.js:96:13)
+      at Socket.emit (events.js:188:7)
