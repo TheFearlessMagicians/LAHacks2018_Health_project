@@ -18,10 +18,10 @@ class LandingPage extends React.Component {
             <div className="container__landing ">
                 <div className ="container__landing__bar">
                  <TypeWriter typing={1} fixed={true}>
-                    <h1> Start something, and do it.</h1>
+                    <h1 className = "container__landing__title"> Start something, and  do it.</h1>
                     </TypeWriter>
                     <TypeWriter typing={this.state.showNaySayer} fixed={true}>
-                       <h2> Or, become a naysayer and bet that they won't.  </h2>
+                       <h2 className = "container__landing__subtitle" > Or, become a naysayer and bet that they won't.  </h2>
                        </TypeWriter>
                     <Input
                         className="container__landing__bar__input"
@@ -85,7 +85,7 @@ class LandingPage extends React.Component {
                           fixed={true}
                          >
                              <blockquote styles = {{'max-width': '40%' }}>
-                    If I'm not ready for the Boston half-marathon in 6 months time I'm gonna pay $1000 for it. Fuck it.
+                    I'd have to be ready for the Boston half-marathon in 6 months, otherwise I've to pay $1000. Fuck! 
                         </blockquote>
                      </TypeWriter>
                      <TypeWriter

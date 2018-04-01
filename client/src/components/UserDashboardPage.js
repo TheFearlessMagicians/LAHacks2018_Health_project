@@ -13,7 +13,7 @@ class  UserDashboardPage extends React.Component {
 
         return (
           <div>
-            <h1>{this.props.player.name}'s' dashboard page</h1>
+            <h1>{this.props.player.name}'s Dashboard Page</h1>
             <UserChallengesList/>
           </div>
 
