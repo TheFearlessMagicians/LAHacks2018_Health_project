@@ -3,6 +3,7 @@ import { Modal, Button, Icon, Input, notification, List, Avatar, Progress, Input
 import moment from 'moment';
 import getContract from '../blockchain/contract';
 import web3 from '../blockchain/web3';
+import axios from 'axios';
 class UserChallengesListItem2 extends React.Component {
         state = {
             visible: false,
@@ -45,71 +46,67 @@ class UserChallengesListItem2 extends React.Component {
                     //pay okay
 
 
-                  const process =  async () => {
-                    const accounts = await web3.eth.getAccounts();
-                    const account = accounts[0];
-                    const exercise = getContract(this.props.challengeId);
-                    const processReturn = (AccountsToEth) => {
-                        let sum = 0;
-                        let returnArray = [];
-                        for (let i = 0; i < AccountsToEth.length; i++) {
-                            sum += AccountsToEth[i][1];
-                            returnArray.push([AccountsToEth[i][0]])
+                    const process = async () => {
+                        const accounts = await web3.eth.getAccounts();
+                        const account = accounts[0];
+                        const exercise = getContract(this.props.challengeId);
+                        const processReturn = (AccountsToEth) => {
+                            let sum = 0;
+                            let returnArray = [];
+                            for (let i = 0; i < AccountsToEth.length; i++) {
+                                sum += AccountsToEth[i][1];
+                                returnArray.push([AccountsToEth[i][0]])
+                            }
+                            for (let i = 0; i < returnArray.length; i++) {
+                                returnArray[i].push((AccountsToEth[i][1]) / sum);
+                            }
+                            return returnArray;
                         }
-                        for (let i = 0; i < returnArray.length; i++) {
-                            returnArray[i].push((AccountsToEth[i][1]) / sum);
+                        const n = await exercise.methods.workoutCount().call({
+                            from: account
+                        })
+
+                        let raw = []
+                        for (let i = 0; i < n; i++) {
+                            let bet = await exercise.methods.getBet(i).call({
+                                from: account
+                            })
+                            Number(bet[0]);
+                            raw.push(bet);
                         }
-                        return returnArray;
-                    }
-                    const n = await exercise.methods.workoutCount().call({
-                      from: account
-                    })
 
-                    let raw = []
-                    for (let i = 0; i < n; i++){
-                      let bet = await exercise.methods.getBet(i).call({
-                        from: account
-                      })
-                      Number(bet[0]);
-                      raw.push(bet);
-                    }
+                        let data = processReturn(raw);
 
-                    let data = processReturn(raw);
+                        let workouts = await exercise.methods.workoutCount().call();
 
-                    let workouts = await exercise.methods.workoutCount().call({
-                        from: accounts[0],
-                    });
+                        let frequency = await exercise.methods.frequency().call();
 
-                    let frequency = await exercise.methods.frequency().call({
-                        from: accounts[0],
-                    });
+                        let balance = await exercise.methods.getBalance().call();
 
-                    let balance = await exercise.methods.getBalance().call({
-                        from: accounts[0],
-                    });
-
-                    await exercise.methods.pay(accounts[0], balance * workouts / frequency).send({
-                        from: accounts[0],
-                        gas: 3000000
-                    });
-
-                    balance = await exercise.methods.getBalance().call({
-                        from: accounts[0],
-                    });
-
-
-                    for (let i = 0; i < data.length; i++) {
-                        await exercise.methods.pay(data[i][0], balance * data[i][1]).send({
-                            from: accounts[0],
+                        await exercise.methods.pay(accounts[0], balance * workouts / frequency).send({
+                            from: account,
                             gas: 3000000
                         });
-                    }
-                    balance = await exercise.methods.getBalance().call({
-                        from: accounts[0],
-                    });
-                  }
 
-                  process();
+                        balance = await exercise.methods.getBalance().call();
+
+
+                        for (let i = 0; i < data.length; i++) {
+                            await exercise.methods.pay(data[i][0], balance * data[i][1]).send({
+                                from: account,
+                                gas: 3000000
+                            });
+                        }
+                        balance = await exercise.methods.getBalance().call();
+                    }
+
+                    process();
+                    try {
+                        await axios.put(`http://localhost:8000/contract/${exercise.options.address}`);
+                    } catch (error) {
+                        console.log(error);
+                    }
+
                 } else
                     this.openNotificationWithIcon('warning', 'Unfortunately...', `You lost the bet and will lose ${this.props.userBet}. You failed to meet your calories goal by ${Math.abs(exceedCalorieGoalBy)}.`);
                 //  return;
@@ -147,7 +144,7 @@ class UserChallengesListItem2 extends React.Component {
                     [ <
                         p > Bet: { this.props.userBet } < /p> , <
                         p > startDate: { moment(this.props.startDate).format('MM DD YYYY') } < /p>, <
-                        p > endDate:: { moment(this.props.endDate).format('MM DD YYYY') } < /p>, <
+                        p > endDate::{ moment(this.props.endDate).format('MM DD YYYY') } < /p>, <
                         p > frequency per week: { this.props.frequency } < /p>, <
                         div >
                         <
@@ -187,37 +184,36 @@ class UserChallengesListItem2 extends React.Component {
                     okText = "Enter Your Workout Here"
                     title = "Workout Log"
                     onOk = { this.handleOk }
-                    onCancel = { this.handleCancel } >
-                    {
+                    onCancel = { this.handleCancel } > {
                         moment(this.props.startDate) > moment() ?
                         <
-                        h3 > This challenge hasn 't started yet </h3> :
-                            <
-                            h3 > DEADLINE: { moment(this.props.endDate).from(moment()) } < /h3>
+                        h3 > This challenge hasn 't started yet </h3> : <
+                        h3 > DEADLINE : { moment(this.props.endDate).from(moment()) } < /h3>
                     } <
                     h4 > Workouts done: < /h4> <
-                        h4 > { this.props.workoutsCompleted.length }
-                    / { this.getTotalExpectedworkouts()} workouts <
-                    /h4> <
+                    h4 > { this.props.workoutsCompleted.length }
+                    / { this.getTotalExpectedworkouts()} workouts < /
+                    h4 > <
                     Progress
                     percent = { Math.ceil((this.props.workoutsCompleted.length / this.getTotalExpectedworkouts()) * 100) }
                     status = "active" / >
                     <
                     h4 > Time till deadline: < /h4> <
-                        Progress
+                    Progress
                     percent = { moment() < moment(this.props.startDate) ? 0 : this.getTimePercentage() }
                     status = { this.props.workoutsCompleted.length == this.getTotalExpectedworkouts() ? "success" : "active" }
                     /> <
                     h4 > Enter number of calories spent: < /h4> <
-                        InputNumber placeholder = "Insert How Many Calories You Learn Today"
+                    InputNumber placeholder = "Insert How Many Calories You Learn Today"
                     onChange = {
-                        (caloriesPerWorkout) => this.setState({ caloriesPerWorkout }) }
+                        (caloriesPerWorkout) => this.setState({ caloriesPerWorkout })
+                    }
                     value = { this.state.caloriesPerWorkout }
                     />
 
                     <
-                    /Modal> <
-                    /List.Item>
+                    /Modal> < /
+                    List.Item >
                 )
             }
         };
