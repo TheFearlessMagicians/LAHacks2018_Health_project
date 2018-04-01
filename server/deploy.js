@@ -1,16 +1,21 @@
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const { interface, bytecode } = require('./compile');
+const i = process.argv[2];
+const axios = require('axios');
+let j = (i==1) ? 0 : 1;
 
 const provider = new HDWalletProvider(
     'detect aspect culture end focus jeans cinnamon kite yellow balcony toast easy',
-    "https://rinkeby.infura.io/5EV30OwgXAK4IhOe667x",
-    2,
-    2
+    "https://rinkeby.infura.io/5EV30OwgXAK4IhOe667x", i,2
 );
 
+const provider1 = new HDWalletProvider(
+    'detect aspect culture end focus jeans cinnamon kite yellow balcony toast easy',
+    "https://rinkeby.infura.io/5EV30OwgXAK4IhOe667x", j,2)
 
 const web3 = new Web3(provider);
+const web31 = new Web3(provider1);
 
 const seedData = [{
         frequency: 5,
@@ -32,38 +37,28 @@ const seedData = [{
     }
 ]
 
-
-
-
-
-
-
-seedData.forEach( async (data, i) => {
-    const accounts =  await web3.eth.getAccounts((err,res)=>{
-        if (err)
-            console.log(err);
-        console.log('response');
-        console.log(res);
+const deploy = async() => {
+    const accountArray = await web3.eth.getAccounts();
+    const account1Array = await web3.eth.getAccounts();
+    const account = accountArray[0]; const account1 = accountArray[1];
+    console.log('Attempting to deploy from account', account)
+    let exercise = await new web3.eth.Contract(JSON.parse(interface)).deploy({ data: bytecode, arguments: [seedData[i].frequency, seedData[i].calorieTargetPerWorkout, seedData[i].endTimeFromStart] }).send({ from: account, gas: '5000000' });
+    console.log(`Deploying at ${exercise.options.address}`);
+    await exercise.methods.deposit().send({
+        from: account,
+        gas: '5000000'
     });
-        console.log(accounts);
-        console.log('Attempting to deploy from account', accounts[i])
-        let exercise = await new web3.eth.Contract(JSON.parse(interface)).deploy({ data: bytecode, arguments: [data.frequency, data.calorieTargetPerWorkout, data.endTimeFromStart] }).send({ from: accounts[i], gas: '6000000' });
-        console.log(exercise.options.address);
-
-        if (i == 0) {
-            await exercise.methods.deposit().send({
-                from: accounts[0]
-            });
-            await exercise.methods.submitBid({
-                from: accounts[1]
-            });
-
-        } else {
-            await exercise.methods.deposit().send({
-                from: accounts[1]
-            });
-            await exercise.methods.submitBid({
-                from: accounts[0]
-            });
-        };
-})
+    await exercise.methods.submitBet().send({
+        from: account,
+        value: web3.utils.toWei('0.02', 'ether'),
+        gas: 3000000
+    });  
+    console.log('Set up completed for',i);
+    
+    axios.post('http://localhost:8000/contract',{
+    	address: exercise.options.address,
+    	goal: seedData[i].goal,
+    	description: seedData[i].description
+    }).then(response => console.log(response.data.message)).catch(error=>{console.log('AXIOS ERROR');console.log(error)});
+}
+deploy();

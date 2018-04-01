@@ -42,11 +42,19 @@ render(){
         <p> endDate: :{moment(this.props.endDate).format('MM DD YYYY')}</p>,
         <div>
             <h4> Workouts done: </h4>
-            <Progress percent={Math.round((this.props.workoutsCompleted / (moment(this.props.startDate- this.props.endDate).format('DDD') / 7 ) * this.props.frequency) * 100)} />
+
+            <Progress
+                percent={Math.round((props.workoutsCompleted / (moment(props.startDate- props.endDate).format('DDD') / 7 ) * props.frequency) * 100)}
+                status="active"
+            />
         </div>,
         <div>
             <h4> Time till deadline: </h4>
-            <Progress percent={moment() < moment(this.props.startDate)? 0: Math.round(100 * (moment() - moment(this.props.startDate) )/ (moment(this.props.endDate) - moment(this.props.startDate)))} />
+            <Progress
+                percent={moment() < moment(props.startDate)? 0: Math.round(100 * (moment() - moment(props.startDate) )/ (moment(props.endDate) - moment(props.startDate)))}
+                status="active"
+            />
+
         </div>
     ]}
     >
@@ -65,9 +73,13 @@ render(){
         >
          <h3>YOU HAVE {moment(this.props.endDate - this.props.startDate).format("DDD")} DAYS LEFT</h3>
          <h4> Workouts done: </h4>
-         <Progress percent={Math.round((this.props.workoutsCompleted / (moment(this.props.startDate- this.props.endDate).format('DDD') / 7 ) * this.props.frequency) * 100)} />
-          <h4> Time till deadline: </h4>
-            <Progress percent={moment() < moment(this.props.startDate)? 0: Math.round(100 * (moment() - moment(this.props.startDate) )/ (moment(this.props.endDate) - moment(this.props.startDate)))} />
+         <Progress 
+          percent={Math.round((this.props.workoutsCompleted / (moment(this.props.startDate- this.props.endDate).format('DDD') / 7 ) * this.props.frequency) * 100)} 
+          status="active"/>
+        <h4> Time till deadline: </h4>
+            <Progress 
+              percent={moment() < moment(this.props.startDate)? 0: Math.round(100 * (moment() - moment(this.props.startDate) )/ (moment(this.props.endDate) - moment(this.props.startDate)))} 
+              status="active"/>
       <Input type = "number" placeholder="Insert How Many Calories You Learn Today" />
 
         </Modal>

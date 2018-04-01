@@ -26,13 +26,11 @@ const AppRouter =()=> (
         }
         <Route path="/marketDashboard" component = {MarketDashboardPage} exact={true} />
         <Route path="/userDashboard" component = {UserDashboardPage} exact={true} />
-        <Route path="/createChallenge" component={AddChallengePage}/> {/* We have to change
+        <Route path="/createChallenge" component={AddChallengePage}/>
 
-        // . Otherwise, when we get /settings, this will be an actual GET request
-        // to the server, even though we want client-side routing.*/}
-        <Route path = "/edit" component={ErrorEdit} />
 
-        <Route component={NotFoundPage} /> {/* final route is a 404. */}
+        <Route component={NotFoundPage} />
+
       </Switch>
     </div>
   </BrowserRouter>
