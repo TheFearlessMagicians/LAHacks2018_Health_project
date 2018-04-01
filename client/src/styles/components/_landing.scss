@@ -19,6 +19,16 @@
 	margin-bottom: $xs-size;
 }
 
+.container__landing__title{
+	font-weight: bolder;
+	margin-bottom: 0;
+}
+
+.container__landing__subtitle{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 .ant-btn.container__landing__bar__button{
 	margin-right: 10px;
 }
