@@ -101,12 +101,13 @@ class UserChallengesListItem2 extends React.Component {
                     }
 
                     process();
+                /*    // TEMPDIS
                     try {
                         await axios.put(`http://localhost:8000/contract/${exercise.options.address}`);
                     } catch (error) {
                         console.log(error);
                     }
-
+                        */
                 } else
                     this.openNotificationWithIcon('warning', 'Unfortunately...', `You lost the bet and will lose ${this.props.userBet}. You failed to meet your calories goal by ${Math.abs(exceedCalorieGoalBy)}.`);
                 //  return;

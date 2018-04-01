@@ -32,11 +32,11 @@ store.dispatch(addChallenge({
 }));
 store.dispatch(addChallenge({
     startDate: moment() - 10000000,
-    endDate: moment() + 90000000000,
-    description: 'Sketching a drawing  with my foot 4 times a week while doing pushups',
-    goal: 'Becoming good at drawing while working out',
+    endDate: moment() + 200000000,
+    description: '30 push ups every day',
+    goal: '30 push ups every day without fail',
     caloriesPerWorkout: 100,
-    frequency: 4,
+    frequency: 7,
     userBet: 8000,
     // skipping current bets, and progress,  as it is defaulted.
     userId: uuid(),

@@ -30,7 +30,7 @@ class LandingPage extends React.Component {
                             this.setState({ name: e.target.value });
                         }}
                     />
-                    
+
                     <Button
                         className = "container__landing__bar__button"
                         onClick={e => {
@@ -52,7 +52,7 @@ class LandingPage extends React.Component {
                         Bet against
                     </Button>
 
-                    
+
                     <Button
                         onClick={e => {
                             if (this.state.name === "")
@@ -85,7 +85,7 @@ class LandingPage extends React.Component {
                           fixed={true}
                          >
                              <blockquote styles = {{'max-width': '40%' }}>
-                    I'd have to be ready for the Boston half-marathon in 6 months, otherwise I've to pay $1000. Fuck! 
+                    Gonna be ready for the Boston half-marathon in 6 months, otherwise I've to pay $1000.
                         </blockquote>
                      </TypeWriter>
                      <TypeWriter
