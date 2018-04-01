@@ -136,9 +136,9 @@ export default class UserChallengeForm extends React.Component {
     };
 
     return (
-      <div>
+      <div >
         {this.state.error && <p> {this.state.error}</p>}
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.onSubmit}>
            <FormItem
           {...formItemLayout}
           label="Goal"
@@ -177,109 +177,51 @@ export default class UserChallengeForm extends React.Component {
                 onChange={this.onuserBetChange}
             />
           </FormItem>
-        </Form>
-
-
-
-
-
-
-
-        <Row type="flex" justify="center">
-          <Col span={24}>
-            <Input
-              type="text"
-              placeholder="Add your goal"
-              autoFocus
-              value={this.state.goal}
-              onChange={this.onGoalChange}
-            />
-          </Col>
-        </Row>
-        <Row type="flex" justify="center">
-          <Col span={24}>
-            <InputNumber
+          <FormItem
+          {...formItemLayout}
+          label="Bet How Frequently You Exercise"
+          >
+             <InputNumber
               size="large"
-              formatter={value =>
-                `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-              }
-              placeholder="Place your bet here"
-              value={this.state.userBet}
-              onChange={this.onuserBetChange}
-            />
-          </Col>
-        </Row>
-        <Row type="flex" justify="center">
-          <Col span={24}>
-            <p>
-              {" "}
-              Select your goal period. Remember, make sure that you goal is:{" "}
-            </p>
-            <ul>
-              <li>S: Specific</li>
-              <li>M: Measurable</li>
-              <li>A: Achievable</li>
-              <li>R: Realistic</li>
-              <li>T: Time-based</li>
-            </ul>
-          </Col>
-        </Row>
-        <Row type="flex" justify="center">
-          <Col span={24}>
-            <InputNumber
-              size="large"
-              placeholder="How many times per week are you going to do this ting? "
               value={this.state.frequency}
               onChange={this.onFrequencyChange}
             />
-          </Col>
-        </Row>
-        <Row type="flex" justify="center">
-          <Col span={24}>
+          </FormItem>
+
+          <FormItem
+          {...formItemLayout}
+          label="Set Your Target's TimeLine"
+          >
             <DateRangePicker
-              startDate={this.state.startDate}
-              endDate={this.state.endDate}
-              onDatesChange={this.onDatesChange}
-              onFocusChange={this.onDateFocusChange}
-              focusedInput={this.state.calendarFocused}
-              showClearDates={true}
-              numberOfMonths={1}
-              isOutsideRange={() => false}
-              startDateId={"start"}
-              endDateId={"end"}
+                startDate={this.state.startDate}
+                endDate={this.state.endDate}
+                onDatesChange={this.onDatesChange}
+                onFocusChange={this.onDateFocusChange}
+                focusedInput={this.state.calendarFocused}
+                showClearDates={true}
+                numberOfMonths={1}
+                isOutsideRange={() => false}
+                startDateId={"start"}
+                endDateId={"end"}
             />
-          </Col>
-        </Row>
-        <Row type="flex" justify="center">
-          <Col span={24}>
-            <textarea
-              placeholder="add a Description for your Challenge "
-              value={this.state.description}
-              onChange={this.onDescriptionChange}
-            />
-          </Col>
-        </Row>
-        <Row type="flex" justify="center">
-          <Col span={24}>
-            <Button type="primary" htmlType="submit" onClick={this.onSubmit}>
-              {" "}
-              Submit{" "}
-            </Button>
-          </Col>
-        </Row>
-        <div>
-          {this.state.endDate == null || this.state.startDate == null ? (
-            <p> Pick a date! </p>
-          ) : (
-            <h1>
-              {" "}
-              {moment(this.state.endDate - this.state.startDate).format(
-                "DDD"
-              )}{" "}
-              DAYS LEFT
-            </h1>
-          )}
-        </div>
+            <div>
+              {this.state.endDate == null || this.state.startDate == null ? (
+                <p> Pick a date! </p>
+                ) : (
+                <h1>
+                  {" "}
+                  {moment(this.state.endDate - this.state.startDate).format(
+                    "DDD"
+                  )}{" "}
+                  DAYS LEFT
+                </h1>
+              )}
+            </div>
+        </FormItem>
+        <FormItem {...tailFormItemLayout}>
+          <Button size= "large" type="primary" htmlType="submit">Register</Button>
+        </FormItem>
+        </Form>
       </div>
     );
   }
