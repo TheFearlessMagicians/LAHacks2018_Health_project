@@ -2649,6 +2649,10 @@ es-to-primitive@^1.1.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.1"
 
+es6-fs@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/es6-fs/-/es6-fs-1.1.0.tgz#b984fb9741fd335e1816e73afc8424d60d46e357"
+
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"

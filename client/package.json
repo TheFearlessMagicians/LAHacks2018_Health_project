@@ -12,6 +12,7 @@
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
     "css-loader": "^0.28.11",
+    "es6-fs": "^1.1.0",
     "live-server": "^1.2.0",
     "moment": "^2.21.0",
     "node-sass": "^4.8.3",
