@@ -9,7 +9,7 @@ const axios = require('axios');
 let j = (i==1) ? 0 : 1;
 
 const mnemonic = 'defense tiny cotton way bamboo tumble also tube disorder surge ask visual';
-const provider = new HDWalletProvider(mnemonic,"https://rinkeby.infura.io/orDImgKRzwNrVCDrAk5Q");
+const provider = new HDWalletProvider(mnemonic,"https://rinkeby.infura.io/orDImgKRzwNrVCDrAk5Q",i,2);
 // );
 
 // const provider1 = new HDWalletProvider(mnemonic,"http://127.0.0.1:7545", j,10)
@@ -57,7 +57,8 @@ const deploy = async() => {
     axios.post('http://localhost:8000/contract',{
     	address: exercise.options.address,
     	goal: seedData[i].goal,
-    	description: seedData[i].description
+    	description: seedData[i].description,
+        endDate: Date.now() + 604800 + i,
     }).then(response => console.log(response.data.message)).catch(error=>{console.log('AXIOS ERROR');console.log(error)});
 }
 deploy();
