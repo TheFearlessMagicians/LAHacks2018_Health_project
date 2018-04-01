@@ -26,7 +26,7 @@ const AppRouter =()=> (
         }
         <Route path="/marketDashboard" component = {MarketDashboardPage} exact={true} />
         <Route path="/userDashboard" component = {UserDashboardPage} exact={true} />
-        <Route path="/createChallenge" component={AddChallengePage}/>
+        <Route path="/createChallenge" component={AddChallengePage} />
 
 
         <Route component={NotFoundPage} />

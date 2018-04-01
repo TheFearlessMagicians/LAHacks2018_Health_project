@@ -1,0 +1,24 @@
+.container__landing {
+  
+  margin: 0 auto;
+  padding: $xl-size $m-size;
+  position: absolute;
+   background-image: url("http://1zl13gzmcsu3l9yq032yyf51-wpengine.netdna-ssl.com/wp-content/uploads/2017/08/sustaining-motivation.jpg");
+   background-repeat:no-repeat;
+   background-size:100% 100vh;
+   width: 100%;
+   height: 100%;
+}
+
+.container__landing__bar{
+	max-width: 60rem;
+	margin: 0 auto;
+}
+
+.container__landing__bar__input{
+	margin-bottom: $xs-size;
+}
+
+.ant-btn.container__landing__bar__button{
+	margin-right: 10px;
+}

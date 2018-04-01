@@ -17,6 +17,17 @@ const challengesReducer = (state = defaultChallengesState, action) => {
         return challenge
     });
 
+    case 'CHALLENGE_COMPLETED':
+        return state.map((challenge) => {
+        if(challenge.challengeId == action.id)
+            return {
+                ...challenge,
+                exceedCaloriesGoalBy: action.exceedCaloriesGoalBy
+          };
+        return challenge
+    });
+
+
     case 'EDIT_CHALLENGE':
         return state.map(challenge => {
             if(challenge.challengeId === action.challengeId)

@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import UserChallengeForm from './UserChallengeForm';
 import {addChallenge} from '../actions/challenges';
 const AddChallengePage = (props) => {
-    console.log('add challenge page player prop')
-    console.log(props.player);
     if(typeof props.player === 'undefined' || props.player.type !== 'user')
         return (
             <div>
